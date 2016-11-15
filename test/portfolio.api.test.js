@@ -20,16 +20,27 @@ describe('tests out the portfolio api', () => {
         password: 'thisbigshort'
     };
 
-    const orderOne = {
+    const Jamie = {
+        username: 'Jamie Shipley',
+        password: ''
+    };
+
+    const buyOrderOne = {
         stock: 'AAPL',
         shares: 100,
         price: 50
     };
 
-    const orderTwo = {
+    const buyOrderTwo = {
         stock: 'GOOGL',
         shares: 100,
         price: 70
+    };
+
+    const sellOrder = {
+        stock: 'AAPL',
+        shares: 50,
+        price: 100
     };
 
     let token = '';
@@ -49,13 +60,46 @@ describe('tests out the portfolio api', () => {
     it('buys a list of stocks', done => {
         request
             .put('/portfolios/buy')
-            .set('Authorization', 'Bearer ' + token)
-            .send(orderOne)
+            .set('Authorization', `Bearer ${token}`)
+            .send(buyOrderOne)
             .then(res => {
-                console.log(res.body);
+                assert.isOk(res.body);
+                return request
+                    .put('/portfolios/buy')
+                    .set('Authorization', `Bearer ${token}`)
+                    .send(buyOrderTwo)
+            })
+            .then(resTwo => {
+                assert.isOk(resTwo.body);
+                assert.equal(resTwo.body.stockValue, 12000);
+                assert.equal(resTwo.body.cashValue, 88000);
+                assert.deepEqual(resTwo.body.stocks, { GOOGL: 100, AAPL: 100});
                 done();
             })
             .catch(err => done(err));
     });
 
+    it('sells some stocks', done => {
+        request
+            .put('/portfolios/sell')
+            .set('Authorization', `Bearer ${token}`)
+            .send(sellOrder)
+            .then(res => {
+                assert.equal(res.body.cashValue, 93000);
+                assert.deepEqual(res.body.stocks, {GOOGL: 100, AAPL: 50});
+                done();
+            })
+            .catch(err => done(err));
+    });
+
+    it('uses a get request to get updated portfolio', done => {
+        request
+            .get('/portfolios')
+            .set('Authorization', `Bearer ${token}`)
+            .then(res => {
+                assert.isOk(res.body)
+                done();
+            })
+            .catch(err => done(err));
+    });
 });
