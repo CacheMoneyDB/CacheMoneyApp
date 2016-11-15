@@ -11,12 +11,16 @@
     <!-- Handlebar templates start-->
     <script id="search-template" type="type/x-handlebars-template">
         <div class="stock-dtls-wrapper">
-            <p data-ticker="{{symbol}}">Stock: {{name}} Ticker: {{symbol}}</p>
-            <p data-price="{{ask}}">Price: {{ask}} Book Value {{bookValue}}</p>
+            <p>Stock: {{name}} Ticker: {{symbol}}</p>
+            <p>Price: {{ask}} Book Value {{bookValue}}</p>
             <p>Today High:{{daysHigh}} Low:{{daysLow}}</p>
             <p>PE Ratio: {{peRatio}} EBITDA {{ebitda}}</p>
             <p>EPS {{earningsPerShare}} </p>
         </div>
+    </script>
+
+    <script id="purchase-template" type="type/x-handlebars-template">
+        <p>Current Portfolio Value: {{cashValue}}</p>
     </script>
 
     <script id="user-template" type="text/x-handlebars-template">
@@ -29,6 +33,12 @@
         <article class="" data-category="" data-content="{{portfolio}}">
             <!-- TODO: Fill up this template-->
         </article>
+    </script>
+
+    <script id="leader-template" type="text/x-handlebars-template">
+        <ul>
+            <li>Name: {{username}} Cash Value {{cashValue}} Stock Value {{stockValue}} Total Value {{netValue}} </li>
+        </ul>
     </script>
 </head>
 <body>
@@ -86,7 +96,6 @@
 
         <section id="leaderboard" class="main-section">
             <h1>Here is the leaderboard</h1>
-            <p>wee wee wee wee wee wee wee wee</p>
         </section>
 
         <section id="about" class="main-section">
@@ -106,6 +115,7 @@
   <script type="text/javascript" src="scripts/view/login.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
+  <script type="text/javascript" src="scripts/view/leaderboard.js"></script>
   <script type="text/javascript" src="scripts/controller/controller.js"></script>
   <script type="text/javascript" src="scripts/controller/routes.js"></script>
 </body>
