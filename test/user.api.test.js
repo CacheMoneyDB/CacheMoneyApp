@@ -6,7 +6,6 @@ const connection = require('./mongoose-setup-testdb');
 
 chai.use(chaiHttp);
 
-
 const user = {
     username: 'awesomeUser',
     password: 'awesomePassword'
@@ -14,7 +13,8 @@ const user = {
 
 const userAdmin = {
     username: 'userAdmin',
-    password: 'adminPassword'
+    password: 'adminPassword',
+    roles: ['admin']
 };
 
 //set another user named admin
@@ -31,6 +31,7 @@ describe('user management', () => {
         if(connection.readyState === 1) drop();
         else connection.on('open', drop);
     });
+
     const request = chai.request(app);
 
     function badRequest(url, send, error, done){
@@ -54,14 +55,16 @@ describe('user management', () => {
         badRequest('/users/signup', {username:'coolUsername'}, 'Valid username and password required', done);
     });
 
-    let token = '';
+    let userToken = '';
+    let adminToken = '';
 
     it('/users/signup', done => {
         request
       .post('/users/signup')
       .send(user)
-      .then(res => assert.isOk( token = res.body.token ))
-      .then( done, done );
+      .then(res => assert.isOk( userToken = res.body.token ))
+      .then(done)
+      .catch(done);
     });
 
     it('cannot be the same username', done => {
@@ -71,7 +74,7 @@ describe('user management', () => {
     it('token is valid', done => {
         request
       .get('/users/signin')
-      .set('authorization', `Bearer ${token}`)
+      .set('authorization', `Bearer ${userToken}`)
       .then(res => assert.isOk(res.body))
       .then(done, done);
     });
@@ -80,29 +83,77 @@ describe('user management', () => {
 // make a new request with the token to the validate api path
 // expect this request to return true
 
-    it('signin', function(done){
+    it('signin', done => {
         request
-      .post('/users/signin')
-      .send(user)
-      .then(res => {
-          request
-          .post('/users/validate')
-          .set('authorization', `Bearer ${res.body.token}`)
+          .post('/users/signin')
+          .send(user)
           .then(res => {
-              assert.isOk(res.body.valid);
-              done();
-          });
-      })
-      .catch(done);
-        // assert.equal(res.body.token, token}))
-      // .then(done, done);
-      // .then((err, res) => {
-      // if(err)done(err);
-      // done();
-    // })
+              request
+              .post('/users/validate')
+              .set('authorization', `Bearer ${res.body.token}`)
+              .then(res => {
+                  assert.isOk(res.body.valid);
+                  done();
+              });
+          })
+            .catch(done);
     });
 
     describe('user admin access', () => {
+
+        it('signup admin', done => {
+            request
+          .post('/users/signup')
+          .send(userAdmin)
+          .then(res => {
+              // console.log('res from describe test: ', res);
+              assert.isOk(adminToken = res.body.token);
+              done();
+          })
+          // .then(done) //expect no problems and call done();
+          .catch(err => {
+              done(err); //if there was an error, mocha displays as error
+          });
+        });
+
+      //sign in as admin here
+
+        it('non-admins cannot delete', done => {
+            request
+          .del('/users')
+          .set('authorization', `Bearer ${userToken}`)
+          .then(() => {
+              // console.log('res: ', res);
+              done('status should error');
+          })
+          .catch(err => {
+              // console.log('err in non-admin: ', err);
+              //put an assert here to check for correct error.
+              assert.equal(err, 'Error: Bad Request');
+              done();
+          });
+        });
+
+        it('admins can delete', done => {
+            request
+          .del('/users')
+          .set('authorization', `Bearer ${adminToken}`)
+          .send({username:'awesomeUser'})
+          .then(() => done())
+          .catch(err => {
+              done(err);
+          });
+        });
+
+        // it('admin sign in', done => {
+        //   request
+        //     .post('users/signin')
+        //     .send(userAdmin)
+        //     .then(res => {
+        //       .delete('')
+        //     })
+        //
+        // });
 
     });
 });
