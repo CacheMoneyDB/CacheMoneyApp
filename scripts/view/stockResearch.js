@@ -12,7 +12,7 @@
                 url: '/yapi?stocks=' + stockSearch.ticker
             }).done(function(data){
                 console.log('Data', data);
-                stockSearch.data = (data[0]);
+                stockSearch.data = (data.snapshot[0]);
                 stockSearch.renderStock();
             }).fail(function(jqxhr, status){
                 console.log('ticker AJAX request has failed', status, jqxhr);
