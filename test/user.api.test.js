@@ -45,8 +45,8 @@ describe('end to end tests for user', () => {
               done();
           })
         .catch(err => done(err));
-    })
+    });
 
 
 
-})
+});
