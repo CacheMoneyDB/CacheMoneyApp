@@ -32,26 +32,53 @@
         <h1>CACHE MONEY</h1>
         <nav>
             <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/about">About</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="stock-search">
-            <input type="text" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
-            <button type="submit" id="search-button">Submit</button>
+
+        <section id="login" class="main-section">
+            <h1>Here is the login</h1>
+            <p>wee wee wee wee wee wee wee wee</p>
         </section>
-        <section id="stock-data">
+
+        <section id="search" class="main-section">
+            <section id="stock-search">
+                <input type="text" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
+                <button type="submit" id="search-button">Submit</button>
+            </section>
+            <section id="stock-data">
+            </section>
+            <section id="account-info">
+            <ul>
+                <li><h4>Account Balance</h4></li>
+                <li>Buy <input type="number" label="Number to Buy" /></li>
+                <li>Sell <input type="number" label="Number to Sell" /></li>
+                <li><button type="submit">Watch</button></li>
+            </ul>
+            </section>
         </section>
-        <section id="account-info">
-          <ul>
-            <li><h4>Account Balance</h4></li>
-            <li>Purchase <input type="number" placeholder=" # of shares" label="Number to Buy"/><button type="submit" id="buy-button" >Buy</button></li>
-            <li>Sell <input type="number" placeholder=" # of shares" label="Number to Sell"/><button type="submit" id="sell-button">Sell</button></li>
-            <li><button type="submit">Watch</button></li> 
-          </ul>
+
+        <section id="portfolio" class="main-section">
+            <h1>Here is the portfolio</h1>
+            <p>wee wee wee wee wee wee wee wee</p>
         </section>
+
+        <section id="leaderboard" class="main-section">
+            <h1>Here is the leaderboard</h1>
+            <p>wee wee wee wee wee wee wee wee</p>
+        </section>
+
+        <section id="about" class="main-section">
+            <h1>Here is the about section</h1>
+            <p>wee wee wee wee wee wee wee wee</p>
+        </section>
+
     </main>
     <footer>
       <ul>
@@ -60,7 +87,10 @@
   </footer>
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+  <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
+  <script type="text/javascript" src="scripts/controller/controller.js"></script>
+  <script type="text/javascript" src="scripts/controller/routes.js"></script>
 </body>
 </html>
