@@ -4,7 +4,8 @@
   "description": "fantasy stock app with persistence",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,8 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "eslint": "^3.10.0",
-    "mocha": "^3.1.2",
-    "serve-favicon": "^2.3.0"
-  },
+    "mocha": "^3.1.2"
+    },
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
@@ -36,5 +36,8 @@
     "mongoose": "^4.6.7",
     "morgan": "^1.7.0",
     "yahoo-finance": "^0.2.14"
+  },
+  "engines": {
+    "node": "6.6.0"
   }
 }
