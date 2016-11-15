@@ -1,15 +1,27 @@
-// (function(module){
+(function(module){
 
     var stockSearch = {};
 
     stockSearch.addButton = function() {
-        $('#search-button').on('click', function (){
-            console.log($(this.data));
-            var ticker = $(this).data('ticker');
-            console.log('ticker', ticker);
+        $('#search-button').on('click', function (event){
+            event.preventDefault();
+            stockSearch.ticker = $(this).prev().val();
+            console.log('ticker', stockSearch.ticker);
+            $.ajax({
+                url: '/yapi?stocks=' + stockSearch.ticker
+            }).done(function(data){
+                console.log('Data', data);
+                stockSearch.data = (data[0]);
+                console.log('SData', stockSearch);
+            }).fail(function(jqxhr, status){
+                console.log('ticker AJAX request has failed', status, jqxhr);
+            });
         });
     };
 
-//     module.stockResearchView = stockResearchView;
+    stockSearch.addButton();
 
-// })(window);
+
+    module.stockResearchView = stockResearchView;
+
+})(window);
