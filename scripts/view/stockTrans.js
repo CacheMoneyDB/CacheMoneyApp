@@ -2,7 +2,7 @@
 
     var stockTrans = {};
 
-    var stockCompiler = Handlebars.compile($('#purchase-template').text());
+    var cashValueCompiler = Handlebars.compile($('#purchase-template').text());
 
     stockTrans.addButton = function() {
         $('#buy-button').on('click', function (event){
@@ -11,11 +11,11 @@
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             stockTrans.cashEffect = -(stockTrans.shares * stockTrans.price);
-            var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares,price: stockTrans.price};
+            var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
             dataToSend = JSON.stringify(dataToSend);
             console.log('datatosend', dataToSend);
             $.ajax({
-                url: '/portfolios/buy/' + dataToSend.stock,
+                url: '/portfolios/buy',
                 type: 'PUT',
                 data: dataToSend                
             }).done(function(data){
@@ -25,10 +25,10 @@
             });
         });
         $.ajax({
-            url:'/portfolios' + dataToSend.stock
+            url:'/portfolios' + stockTrans.stock
         }).done(function(data){
             console.log('Data', data);
-            stockTrans.renderStock();
+            renderCashValue(data);
         }).fail(function(jqxhr, status){
             console.log('cash value AJAX request has failed', status, jqxhr);
         });
@@ -37,10 +37,9 @@
 
     stockTrans.addButton();
 
-    // stockTrans.renderStock = function(){
-    //     console.log('STrans', stockTrans);
-    //     $('#stock-data').empty().append(stockCompiler(stockTrans.data));
-    // };
+    data.renderCashValue = function(){
+        $('#account-info').empty().append(cashValueCompiler(data.cashValue));
+    };
 
     module.stockTrans = stockTrans;
 
