@@ -11,9 +11,12 @@
     <!-- Handlebar templates start-->
     <script id="search-template" type="type/x-handlebars-template">
         <details>
-            <summary> Stock: {{name}} Ticker: {{symbol}} </summary>
             <div class="stock-dtls-wrapper">
-
+                <p data-ticker="{{symbol}}">Stock: {{name}} Ticker: {{symbol}}</p>
+                <p data-price="{{ask}}">Price: {{ask}} Book Value {{bookValue}}</p>
+                <p>Today High:{{daysHigh}} Low:{{daysLow}}</p>
+                <p>PE Ratio: {{peRatio}} EBITDA {{ebitda}}</p>
+                <p>EPS {{earningsPerShare}} </p>
             </div>
         </details>
 
@@ -44,9 +47,9 @@
         <section id="account-info">
           <ul>
             <li><h4>Account Balance</h4></li>
-            <li>Buy <input type="number" label="Number to Buy" /></li>
-            <li>Sell <input type="number" label="Number to Sell" /></li>
-            <li><button type="submit">Watch</button></li>
+            <li>Purchase <input type="number" placeholder=" # of shares" label="Number to Buy"/><button type="submit" id="buy-button" >Buy</button></li>
+            <li>Sell <input type="number" placeholder=" # of shares" label="Number to Sell"/><button type="submit" id="sell-button">Sell</button></li>
+            <li><button type="submit">Watch</button></li> 
           </ul>
         </section>
     </main>
@@ -58,5 +61,6 @@
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
+  <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
 </body>
 </html>
