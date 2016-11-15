@@ -16,7 +16,6 @@ describe('user model', () => {
         });
     });
 
-
     it('name is required', done => {
         const user = new User();
         user.password = 'testPassword';
@@ -26,7 +25,6 @@ describe('user model', () => {
             done();
         });
     });
-
 
     it('password is required', done => {
         const user = new User();
