@@ -2,29 +2,37 @@
 
     var stockTrans = {};
 
-    // var stockCompiler = Handlebars.compile($('#search-template').text());
+    var stockCompiler = Handlebars.compile($('#purchase-template').text());
 
     stockTrans.addButton = function() {
         $('#buy-button').on('click', function (event){
             event.preventDefault();
             stockTrans.shares = $(this).prev().val();
-            console.log('shares', stockTrans.shares);
-            stockTrans.stock = $('p#data-ticker');
-            console.log('ticker', stockTrans.stock);
-            stockTrans.price = $('p#data-price');
+            stockTrans.stock = stockSearch.data.symbol;
+            stockTrans.price = stockSearch.data.ask;
             stockTrans.cashEffect = -(stockTrans.shares * stockTrans.price);
-            // $.ajax({
-            //     url: '/portfolios/buy/' + stockTrans.stock,
-            //     type: PUT,
-            //     data:                 
-            // }).done(function(data){
-            //     console.log('Data', data);
-            //     stockSearch.data = (data[0]);
-            //     stockSearch.renderStock();
-            // }).fail(function(jqxhr, status){
-            //     console.log('ticker AJAX request has failed', status, jqxhr);
-            // });
+            var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares,price: stockTrans.price};
+            dataToSend = JSON.stringify(dataToSend);
+            console.log('datatosend', dataToSend);
+            $.ajax({
+                url: '/portfolios/buy/' + dataToSend.stock,
+                type: 'PUT',
+                data: dataToSend                
+            }).done(function(data){
+                console.log('Data', dataToSend);
+            }).fail(function(jqxhr, status){
+                console.log('buy AJAX request has failed', status, jqxhr);
+            });
         });
+        $.ajax({
+            url:'/portfolios' + dataToSend.stock
+        }).done(function(data){
+            console.log('Data', data);
+            stockTrans.renderStock();
+        }).fail(function(jqxhr, status){
+            console.log('cash value AJAX request has failed', status, jqxhr);
+        });
+
     };
 
     stockTrans.addButton();
