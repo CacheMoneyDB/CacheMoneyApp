@@ -45,6 +45,12 @@ nav ul {
 nav ul li {
 }
 
+/*.main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}*/
+
 #stock-data {
   min-height: 40vh;
   margin: 0 auto;
