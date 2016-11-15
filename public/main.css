@@ -51,6 +51,12 @@ nav ul li {
   justify-content: center;
 }*/
 
+#login form {
+  display: flex;
+  flex-direction: column;
+  margin: 2em auto;
+}
+
 #stock-data {
   min-height: 40vh;
   margin: 0 auto;
