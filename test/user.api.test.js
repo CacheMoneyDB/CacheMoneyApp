@@ -21,15 +21,30 @@ describe('end to end tests for user', () => {
         password: 'thebigshort'
     };
 
+    let token = '';
+
     it('signs up a new user', done => {
         request
           .post('/users/signup')
           .send(Michael)
           .then(res => {
-              console.log('res.body ', res.body);
+              assert.isOk(res.body.token);
+              token = res.body.token;
               done();
           })
           .catch(err => done(err));
+    });
+
+    it('signs in an existing user', done => {
+        request
+          .post('/users/signin')
+          .send(Michael)
+          .then(res => {
+              assert.isOk(res.body.token);
+              token = res.body.token;
+              done();
+          })
+        .catch(err => done(err));
     })
 
 
