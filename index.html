@@ -37,7 +37,8 @@
         <nav>
             <ul>
                 <li><a href="/login">Login</a></li>
-                <li><a href="/portfolio">Stock Portfolio</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
                 <li><a href="/leaderboard">Leaderboard</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
@@ -48,20 +49,20 @@
         <section id="login" class="main-section">
             <form>
                 <h4>Existing users: Sign in here</h4>
-                <input type="text" name="user-name" placeholder="Name" label="Username: " />
-                <input type="text" name="user-pw" placeholder="Password" label="Password: " />
-                <button type="submit">Submit</button>
+                <input type="text" name="user-name" placeholder="Name" label="Username: " required />
+                <input type="password" name="user-pw" placeholder="Password" label="Password: " required />
+                <button type="submit" id="signin-button">Submit</button>
             </form>
             <form>
                 <h4>New users: Sign up here</h4>
-                <input type="text" name="new-user-name" placeholder="Name" label="Username: " />
-                <input type="text" name="new-user-email" placeholder="Email" label="Email: " />
-                <input type="text" name="new-user-pw" placeholder="Password" label="Password: " />
-                <button type="submit">Submit</button>
+                <input type="text" name="new-user-name" placeholder="Name" label="Username: " required />
+                <input type="text" name="new-user-email" placeholder="Email" label="Email: " required />
+                <input type="password" name="new-user-pw" placeholder="Password" label="Password: " required />
+                <button type="submit" id="signup-button">Submit</button>
             </form>
         </section>
 
-        <section id="portfolio" class="main-section">
+        <section id="search" class="main-section">
             <section id="stock-search">
                 <input type="text" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
                 <button type="submit" id="search-button">Submit</button>
@@ -76,6 +77,11 @@
                 <li><button type="submit">Watch</button></li> 
             </ul>
             </section>
+        </section>
+
+        <section id="portfolio" class="main-section">
+            <h1>Here is the portfolio</h1>
+            <p>wee wee wee wee wee wee wee wee</p>
         </section>
 
         <section id="leaderboard" class="main-section">

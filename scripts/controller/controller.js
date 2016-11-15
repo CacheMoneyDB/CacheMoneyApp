@@ -7,6 +7,13 @@
         $('#login').fadeIn();
     };
 
+    let searchCtrl = {};
+
+    searchCtrl.show = function() {
+        $('.main-section').hide();
+        $('#search').fadeIn();
+    };
+
     let portfolioCtrl = {};
 
     portfolioCtrl.show = function() {
@@ -29,6 +36,7 @@
     };
 
     module.loginCtrl = loginCtrl;
+    module.searchCtrl = searchCtrl;
     module.portfolioCtrl = portfolioCtrl;
     module.leaderboardCtrl = leaderboardCtrl;
     module.aboutCtrl = aboutCtrl;
