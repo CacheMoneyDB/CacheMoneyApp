@@ -57,11 +57,6 @@ nav ul li {
   margin: 2em auto;
 }
 
-#stock-data {
-  min-height: 40vh;
-  margin: 0 auto;
-}
-
 footer ul {
   display: flex;
   justify-content: space-around;
