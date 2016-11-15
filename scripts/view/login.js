@@ -5,16 +5,21 @@
     login.newUser = function() {
         $('#signup-button').on('click', function(event) {
             event.preventDefault();
-            let username = $('#new-user-name').val();
-            // let email = $('#new-user-email').val();
-            let password = $('#new-user-pw').val();
+            let data = {};
+            data.username = $('#new-user-name').val();
+            data.password = $('#new-user-pw').val();
             $.ajax({
                 url: '/users/signup',
                 type: 'POST',
-                data: {username: username, password: password}
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                error: function(error) {
+                    console.log(error);
+                }
             })
             .done(function(user) {
                 console.log('new user created: ', user);
+                localStorage.setItem('token', user.token);
             });
         });
     };
