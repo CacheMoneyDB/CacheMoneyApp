@@ -1,20 +1,24 @@
+(function(module){
 
+    var leaderBoardData = {};
 
-var leaderCompiler = Handlebars.compile($('#leader-template').text());
+    var leaderCompiler = Handlebars.compile($('#leader-template').text());
 
-$('').on('click', function(){
-    $.ajax({
-        url: '/leaderboard'
-    }).done(function(leaderData){
-        console.log('Data', leaderData);
-        leaderBoardData = leaderData;
-        leaderSearch.renderStock();
-    }).fail(function(jqxhr, status){
-        console.log('leaderboard AJAX request has failed', status, jqxhr);
+    $('leaderboard-event').on('click', function(){
+        $.ajax({
+            url: '/leaderboard'
+        }).done(function(leaderData){
+            console.log('Data', leaderData);
+            leaderBoardData = leaderData;
+            leaderSearch.renderStock();
+        }).fail(function(jqxhr, status){
+            console.log('leaderboard AJAX request has failed', status, jqxhr);
+        });
+
+        leaderSearch.renderStock = function(){
+            console.log('SData', stockSearch);
+            $('#leaderboard').empty().append(leaderCompiler(leaderBoardData));
+        };
     });
 
-    leaderSearch.renderStock = function(){
-        console.log('SData', stockSearch);
-        $('#leaderboard').empty().append(leaderCompiler(leaderBoardData));
-    };
-});
+})(window);
