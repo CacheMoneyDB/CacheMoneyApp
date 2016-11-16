@@ -5,7 +5,7 @@ var leaderCompiler = Handlebars.compile($('#leader-template').text());
 $.ajax({
     url: '/leaderboard'
 }).done(function(leaderData){
-    console.log('Data', leaderData);
+    // console.log('Data', leaderData);
     leaderBoardData = leaderData;
     leaderSearch.renderStock();
 }).fail(function(jqxhr, status){
@@ -13,6 +13,6 @@ $.ajax({
 });
 
 leaderSearch.renderStock = function(){
-    console.log('SData', stockSearch);
+    // console.log('SData', stockSearch);
     $('#leaderboard').empty().append(leaderCompiler(leaderBoardData));
 };
