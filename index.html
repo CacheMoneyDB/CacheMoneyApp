@@ -36,8 +36,11 @@
     </script>
 
     <script id="leader-template" type="text/x-handlebars-template">
+        <h2>{{place}}. Name: {{user}}</h2>
         <ul>
-            <li>Name: {{username}} Cash Value {{cashValue}} Stock Value {{stockValue}} Total Value {{netValue}} </li>
+            <li>Cash Value: {{cashValue}}</li>
+            <li>Stock Value: {{stockValue}}</li>
+            <li>Total Value: {{netValue}}</li>
         </ul>
     </script>
 </head>
@@ -117,6 +120,7 @@
   <script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
   <script type="text/javascript" src="scripts/model/stockResearchModel.js"></script>
+  <script type="text/javascript" src="scripts/model/leaderboardModel.js"></script>
   <script type="text/javascript" src="scripts/view/login.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
