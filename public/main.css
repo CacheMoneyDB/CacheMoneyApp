@@ -11,6 +11,9 @@ header {
   flex-direction: column;
   border-bottom: 1px solid black;
   width: 100vw;
+  background: url('/public/assets/dollar.svg');
+  background-size: 25px;
+  background-position: center;
 }
 
 h1 {
@@ -55,6 +58,21 @@ nav ul li {
   display: flex;
   flex-direction: column;
   margin: 2em auto;
+}
+
+button {
+  color: inherit;
+  background-color: #fff;
+  border-radius: 3px;
+  font-size: 0.9em;
+  border: 1px solid #000;
+  margin: 0.5em auto;
+}
+
+button:active {
+  background-color: #555;
+  color: #fff;
+  border-color: #fff;
 }
 
 footer ul {
