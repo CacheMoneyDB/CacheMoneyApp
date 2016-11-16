@@ -22,7 +22,7 @@ describe('tests out the portfolio api', () => {
 
     const Jamie = {
         username: 'Jamie Shipley',
-        password: ''
+        password: 'thebigshort'
     };
 
     const buyOrderOne = {
@@ -43,7 +43,8 @@ describe('tests out the portfolio api', () => {
         price: 100
     };
 
-    let token = '';
+    let tokenOne = '';
+    let tokenTwo = '';
 
     it('signs up a new user', done => {
         request
@@ -51,7 +52,7 @@ describe('tests out the portfolio api', () => {
             .send(Steve)
             .then(res => {
                 assert.isOk(res.body.token);
-                token = res.body.token;
+                tokenOne = res.body.token;
                 done()
             })
             .catch(err => done(err));
@@ -60,13 +61,13 @@ describe('tests out the portfolio api', () => {
     it('buys a list of stocks', done => {
         request
             .put('/portfolios/buy')
-            .set('Authorization', `Bearer ${token}`)
+            .set('Authorization', `Bearer ${tokenOne}`)
             .send(buyOrderOne)
             .then(res => {
                 assert.isOk(res.body);
                 return request
                     .put('/portfolios/buy')
-                    .set('Authorization', `Bearer ${token}`)
+                    .set('Authorization', `Bearer ${tokenOne}`)
                     .send(buyOrderTwo)
             })
             .then(resTwo => {
@@ -82,7 +83,7 @@ describe('tests out the portfolio api', () => {
     it('sells some stocks', done => {
         request
             .put('/portfolios/sell')
-            .set('Authorization', `Bearer ${token}`)
+            .set('Authorization', `Bearer ${tokenOne}`)
             .send(sellOrder)
             .then(res => {
                 assert.equal(res.body.cashValue, 93000);
@@ -95,7 +96,7 @@ describe('tests out the portfolio api', () => {
     it('uses a get request to get updated portfolio', done => {
         request
             .get('/portfolios')
-            .set('Authorization', `Bearer ${token}`)
+            .set('Authorization', `Bearer ${tokenOne}`)
             .then(res => {
                 assert.isOk(res.body)
                 done();
