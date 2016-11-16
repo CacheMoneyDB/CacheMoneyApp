@@ -20,6 +20,7 @@
             .done(function(user) {
                 console.log('new user created: ', user);
                 localStorage.setItem('token', user.token);
+                $('#signupForm').hide();
             });
         });
     };
@@ -41,6 +42,15 @@
             })
             .done(function(user) {
                 console.log('logged in as ', user);
+                // $.ajax({
+                //     url: '/portfolios/:userId',
+                //     type: 'get',
+                //     contentType: 'application/json',
+                //     data: JSON.stringify(data),
+                //     error: function(error) {
+                //         console.log(error);
+                //     }
+                // })
             });
 
         });
@@ -48,7 +58,7 @@
 
     login.newUser();
     login.existingUser();
-    
+
     module.login = login;
 
 })(window);
