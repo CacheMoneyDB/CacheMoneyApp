@@ -76,6 +76,10 @@ button:active {
   border-color: #fff;
 }
 
+.error-msg {
+  color: red;
+}
+
 footer ul {
   display: flex;
   justify-content: space-around;
