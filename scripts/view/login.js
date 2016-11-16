@@ -6,6 +6,7 @@
         $('#signup-button').on('click', function(event) {
             event.preventDefault();
             $('.error-msg').empty();
+            $('#logged-in').empty();
             let data = {};
             data.username = $('#new-user-name').val();
             data.password = $('#new-user-pw').val();
@@ -31,6 +32,7 @@
         $('#signin-button').on('click', function(event) {
             event.preventDefault();
             $('.error-msg').empty();
+            $('#logged-in').empty();
             let data = {};
             data.username = $('#user-name').val();
             data.password = $('#user-pw').val();
