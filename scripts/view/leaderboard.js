@@ -13,6 +13,7 @@
                 contentType: 'application/json',
                 url: '/portfolios/leaderboard'
             }).done(function(data){
+
                 // console.log('Data', data);
                 $('#leaderboard').empty();
                 module.leaderBoardModel.formatData(data, function(err, formattedData){
