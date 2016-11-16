@@ -1,5 +1,5 @@
 (function(module) {
-    // const users = require('../lib/routes/users');
+
     var login = {};
 
     login.newUser = function() {
@@ -20,7 +20,8 @@
             .done(function(user) {
                 console.log('new user created: ', user);
                 localStorage.setItem('token', user.token);
-                $('#signupForm').hide();
+                $('#signup-form').hide();
+                login.loggedIn(user.username);
             });
         });
     };
@@ -85,7 +86,24 @@
               .append('<h4>Stocks</h4>' + Object.keys(data.stocks) + br)
               .append('<h4>User Id</h4>' + data.userId + br);
             });
+        });
+    };
 
+    login.loggedIn = function(user) {
+        $('#signin-form').hide();
+        $('#signup-form').hide();
+        $('#login')
+            .prepend('<section id="logged-in"><span>Welcome! You are logged in as ' + user + '.</span><button type="button" id="logout-button">Log Out</button></section>');
+        login.logOut();
+    };
+
+    login.logOut = function() {
+        $('#logout-button').on('click', function(event) {
+            event.preventDefault();
+            localStorage.removeItem('token');
+            $('#logged-in').html('You have logged out. See you next time!');
+            $('#signin-form').show().trigger('reset');
+            $('#signup-form').show().trigger('reset');
         });
 
 
