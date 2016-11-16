@@ -8,16 +8,23 @@
         $('#buy-button').on('click', function (event){
             event.preventDefault();
             stockTrans.shares = $(this).prev().val();
+            console.log('stockSearch stockTrans: ', stockSearch);
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             stockTrans.cashEffect = -(stockTrans.shares * stockTrans.price);
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
             dataToSend = JSON.stringify(dataToSend);
             // console.log('datatosend', dataToSend);
+            let token = localStorage.getItem('token');
             $.ajax({
+                beforeSend: (request) =>{
+                    request.setRequestHeader('authorization', `Bearer ${token}`);
+                },
                 url: '/portfolios/buy',
+                contentType: 'application/json',
+
                 type: 'PUT',
-                data: dataToSend                
+                data: dataToSend
             }).done(function(data){
                 console.log('Data', dataToSend);
             }).fail(function(jqxhr, status){
