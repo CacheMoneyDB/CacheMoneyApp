@@ -22,7 +22,27 @@ describe('tests out the portfolio api', () => {
 
     const Jamie = {
         username: 'Jamie Shipley',
-        password: ''
+        password: 'thebigshort'
+    };
+
+    const Chris = {
+        username: 'Christopheles',
+        password: 'testtest'
+    };
+
+    const Dave = {
+        username: 'Dave',
+        password: 'davewashere'
+    };
+
+    const Wayne = {
+        username: 'Bruce Wayne',
+        password: 'gotham'
+    };
+
+    const Tony = {
+        username: 'Ironman',
+        password: 'marvel'
     };
 
     const buyOrderOne = {
@@ -43,30 +63,71 @@ describe('tests out the portfolio api', () => {
         price: 100
     };
 
-    let token = '';
+    let tokenOne = '';
+    let tokenTwo = '';
 
-    it('signs up a new user', done => {
+    it('signs up a new user Steve', done => {
         request
             .post('/users/signup')
             .send(Steve)
             .then(res => {
                 assert.isOk(res.body.token);
-                token = res.body.token;
+
+                tokenOne = res.body.token;
                 done();
             })
             .catch(err => done(err));
     });
 
+    it('signs up a new user Jamie', done => {
+        request
+            .post('/users/signup')
+            .send(Jamie)
+            .then(res => {
+                assert.isOk(res.body.token);
+                tokenTwo = res.body.token;
+                done();
+            })
+            .catch(err => done(err));
+    });
+
+    function userSignup(user, doneCB) {
+        request
+            .post('/users/signup')
+            .send(user)
+            .then(res => {
+                assert.isOk(res.body.token);
+                doneCB();
+            })
+            .catch(err => doneCB(err));
+    };
+
+    it('signs up new user Chris', done => {
+        userSignup(Chris, done);
+    });
+
+    it('signs up new user Dave', done => {
+        userSignup(Dave, done);
+    });
+
+    it('signs up new user Wayne', done => {
+        userSignup(Wayne, done);
+    });
+
+    it('signs up new user Tony', done => {
+        userSignup(Tony, done);
+    });
+
     it('buys a list of stocks', done => {
         request
             .put('/portfolios/buy')
-            .set('Authorization', `Bearer ${token}`)
+            .set('Authorization', `Bearer ${tokenOne}`)
             .send(buyOrderOne)
             .then(res => {
                 assert.isOk(res.body);
                 return request
                     .put('/portfolios/buy')
-                    .set('Authorization', `Bearer ${token}`)
+                    .set('Authorization', `Bearer ${tokenOne}`)
                     .send(buyOrderTwo);
             })
             .then(resTwo => {
@@ -82,7 +143,7 @@ describe('tests out the portfolio api', () => {
     it('sells some stocks', done => {
         request
             .put('/portfolios/sell')
-            .set('Authorization', `Bearer ${token}`)
+            .set('Authorization', `Bearer ${tokenOne}`)
             .send(sellOrder)
             .then(res => {
                 assert.equal(res.body.cashValue, 93000);
@@ -95,10 +156,33 @@ describe('tests out the portfolio api', () => {
     it('uses a get request to get updated portfolio', done => {
         request
             .get('/portfolios')
-            .set('Authorization', `Bearer ${token}`)
+            .set('Authorization', `Bearer ${tokenOne}`)
             .then(res => {
                 console.log('res.body portfolio: ', res.body);
                 assert.isOk(res.body);
+                done();
+            })
+            .catch(err => done(err));
+    });
+
+
+    it('gets every user in the database', done => {
+        request
+            .get('/portfolios/all')
+            .set('Authorization', `Bearer ${tokenTwo}`)
+            .then(res => {
+                assert.equal(res.body.length, 6);
+                done();
+            })
+            .catch(err => done(err));
+    });
+
+    it('gets top 5 users based on netvalue', done => {
+        request
+            .get('/portfolios/leaderboard')
+            .set('Authorization', `Bearer ${tokenTwo}`)
+            .then(res => {
+                assert.equal(res.body.length, 5);
                 done();
             })
             .catch(err => done(err));
