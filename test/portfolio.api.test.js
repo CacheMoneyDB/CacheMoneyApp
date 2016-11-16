@@ -52,7 +52,7 @@ describe('tests out the portfolio api', () => {
             .then(res => {
                 assert.isOk(res.body.token);
                 token = res.body.token;
-                done()
+                done();
             })
             .catch(err => done(err));
     });
@@ -67,7 +67,7 @@ describe('tests out the portfolio api', () => {
                 return request
                     .put('/portfolios/buy')
                     .set('Authorization', `Bearer ${token}`)
-                    .send(buyOrderTwo)
+                    .send(buyOrderTwo);
             })
             .then(resTwo => {
                 assert.isOk(resTwo.body);
@@ -97,7 +97,8 @@ describe('tests out the portfolio api', () => {
             .get('/portfolios')
             .set('Authorization', `Bearer ${token}`)
             .then(res => {
-                assert.isOk(res.body)
+                console.log('res.body portfolio: ', res.body);
+                assert.isOk(res.body);
                 done();
             })
             .catch(err => done(err));
