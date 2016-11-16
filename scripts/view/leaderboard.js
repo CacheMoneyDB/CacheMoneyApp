@@ -13,9 +13,13 @@
                 contentType: 'application/json',
                 url: '/portfolios/leaderboard'
             }).done(function(data){
-                console.log('Data', data);
-                leaderBoardData = data;
-                leaderBoardData.renderStock();
+                // console.log('Data', data);
+                $('#leaderboard').empty();
+                module.leaderBoardModel.formatData(data, function(err, formattedData){
+                    formattedData.forEach(function (leaderboardEntry){
+                        leaderBoardData.renderStock(leaderboardEntry);
+                    });
+                });
             }).fail(function(jqxhr, status){
                 console.log('leaderboard AJAX request has failed', status, jqxhr);
             });
@@ -25,9 +29,9 @@
     leaderBoardData.tab();
 
 
-    leaderBoardData.renderStock = function(){
-        console.log('SData', stockSearch);
-        $('#leaderboard').empty().append(leaderCompiler(leaderBoardData));
+    leaderBoardData.renderStock = function(leaderBoardDataEntry){
+        // console.log('SData', leaderBoardDataEntry);
+        $('#leaderboard').append(leaderCompiler(leaderBoardDataEntry));
     };
 
     module.leaderBoardData = leaderBoardData;
