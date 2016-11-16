@@ -20,7 +20,6 @@
             .done(function(user) {
                 console.log('new user created: ', user);
                 localStorage.setItem('token', user.token);
-                $('#signup-form').hide();
                 login.loggedIn(user.username);
             });
         });
@@ -45,6 +44,7 @@
             .done(function(user) {
                 console.log('new user created: ', user);
                 localStorage.setItem('token', user.token);
+                login.loggedIn(user.username);
             })
             ;
 
@@ -92,6 +92,7 @@
     login.loggedIn = function(user) {
         $('#signin-form').hide();
         $('#signup-form').hide();
+        $('#logged-in').hide();
         $('#login')
             .prepend('<section id="logged-in"><span>Welcome! You are logged in as ' + user + '.</span><button type="button" id="logout-button">Log Out</button></section>');
         login.logOut();
@@ -105,11 +106,6 @@
             $('#signin-form').show().trigger('reset');
             $('#signup-form').show().trigger('reset');
         });
-
-
-
-        // console.log('logged in as ', user);
-
     };
 
     login.newUser();
