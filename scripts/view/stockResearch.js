@@ -8,6 +8,10 @@
         $('#search-button').on('click', function (event){
             event.preventDefault();
             stockSearch.ticker = $(this).prev().val().toUpperCase();
+            console.log('ticker', stockSearch.ticker);
+            if(!stockSearch.ticker){
+                $('#stock-data').append('<span>That is not a Stock Ticker</span>');
+            };
             $.ajax({
                 url: '/yapi?stocks=' + stockSearch.ticker
             }).done(function(data){
@@ -17,6 +21,9 @@
                 stockResearchModel(data.historical, $('#stockchart')[0]);
                 stockSearch.renderStock();
             }).fail(function(jqxhr, status){
+                // if(status === '304'){
+                //     $('#stock-data').append('<span>That is not a Stock Ticker</span>');
+                // };
                 console.log('ticker AJAX request has failed', status, jqxhr);
             });
         });
