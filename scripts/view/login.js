@@ -2,6 +2,26 @@
 
     var login = {};
 
+    $(function() {
+        if (localStorage.token) {
+            $.ajax({
+                url: '/users/validate',
+                type: 'POST',
+                contentType: 'application/json',
+                headers: {
+                    'Authorization': 'Bearer '+localStorage.token
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            })
+            .done(function(user) {
+                console.log('logged in as: ', user);
+                login.loggedIn(user.username);
+            });
+        }
+    });
+
     login.newUser = function() {
         $('#signup-button').on('click', function(event) {
             event.preventDefault();
