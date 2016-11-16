@@ -13,7 +13,7 @@
                 contentType: 'application/json',
                 url: '/portfolios/leaderboard'
             }).done(function(data){
-                console.log('Data', data);
+                console.log('leaderboardData', data);
                 leaderBoardData = data;
                 leaderBoardData.renderStock();
             }).fail(function(jqxhr, status){

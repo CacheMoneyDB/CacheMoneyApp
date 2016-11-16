@@ -31,7 +31,16 @@
 
     <script id="portfolio-template" type="text/x-handlebars-template">
         <article class="" data-category="" data-content="{{portfolio}}">
-            <!-- TODO: Fill up this template-->
+          <p>Stocks: {{#each stockKeyValue}}
+            <ul>
+              <li>{{key}} : {{stock}}</li>
+            </ul>
+          {{/each}}</p>
+          <p>Stock: {{name}} Ticker: {{symbol}}</p>
+          <p>Price: {{ask}} Book Value {{bookValue}}</p>
+          <p>Today High:{{daysHigh}} Low:{{daysLow}}</p>
+          <p>PE Ratio: {{peRatio}} EBITDA {{ebitda}}</p>
+          <p>EPS {{earningsPerShare}} </p>
         </article>
     </script>
 
@@ -48,7 +57,7 @@
             <ul>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/search">Search</a></li>
-                <li id='portfolioNav'><a href="/portfolio">Portfolio</a></li>
+                <li id='portfolio-nav'><a href="/portfolio">Portfolio</a></li>
                 <li><a href="/leaderboard" id="leaderboard-event">Leaderboard</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
@@ -122,6 +131,8 @@
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
   <script type="text/javascript" src="scripts/view/leaderboard.js"></script>
+  <script type="text/javascript" src="scripts/view/portfolio.js"></script>
+
   <script type="text/javascript" src="scripts/controller/controller.js"></script>
   <script type="text/javascript" src="scripts/controller/routes.js"></script>
 </body>
