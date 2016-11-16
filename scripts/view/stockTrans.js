@@ -12,14 +12,20 @@
             stockTrans.price = stockSearch.data.ask;
             // stockTrans.cashEffect = -(stockTrans.shares * stockTrans.price);
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
+            var token = 'Bearer ' + module.localStorage.getItem('token');
+            console.log('here\'s the token', token);
             dataToSend = JSON.stringify(dataToSend);
-            console.log('datatosend', dataToSend);
+            // console.log('datatosend', dataToSend);
             $.ajax({
                 headers:{
                     Authorization: 'Bearer ' + module.localStorage.getItem('token')
                 },
                 contentType: 'application/json',
                 url: '/portfolios/buy',
+                headers: {
+                    'Authorization': token
+                },
+                contentType: 'application/json',
                 type: 'PUT',
                 data: dataToSend                
             }).done(function(data){

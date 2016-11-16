@@ -24,7 +24,30 @@
         });
     };
 
+    login.existingUser = function() {
+        $('#signin-button').on('click', function(event) {
+            event.preventDefault();
+            let data = {};
+            data.username = $('#user-name').val();
+            data.password = $('#user-pw').val();
+            $.ajax({
+                url: '/users/signin',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                error: function(error) {
+                    console.log(error);
+                }
+            })
+            .done(function(user) {
+                console.log('logged in as ', user);
+            });
+
+        });
+    };
+
     login.newUser();
+    login.existingUser();
     
     module.login = login;
 

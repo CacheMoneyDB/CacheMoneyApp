@@ -2,7 +2,6 @@
 
 var leaderCompiler = Handlebars.compile($('#leader-template').text());
 
-
 $('').on('click', function(){
     $.ajax({
         url: '/leaderboard'
