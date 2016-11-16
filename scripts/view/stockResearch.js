@@ -11,7 +11,7 @@
             $.ajax({
                 url: '/yapi?stocks=' + stockSearch.ticker
             }).done(function(data){
-                console.log('Data', data);
+                // console.log('Data', data);
                 stockSearch.data = (data.snapshot[0]);
                 stockSearch.renderStock();
             }).fail(function(jqxhr, status){
@@ -23,7 +23,7 @@
     stockSearch.addButton();
 
     stockSearch.renderStock = function(){
-        console.log('SData', stockSearch);
+        // console.log('SData', stockSearch);
         $('#stock-data').empty().append(stockCompiler(stockSearch.data));
     };
 

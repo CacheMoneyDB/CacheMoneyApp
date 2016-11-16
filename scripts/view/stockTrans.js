@@ -13,7 +13,7 @@
             stockTrans.cashEffect = -(stockTrans.shares * stockTrans.price);
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
             dataToSend = JSON.stringify(dataToSend);
-            console.log('datatosend', dataToSend);
+            // console.log('datatosend', dataToSend);
             $.ajax({
                 url: '/portfolios/buy',
                 type: 'PUT',
@@ -27,7 +27,7 @@
         $.ajax({
             url:'/portfolios' + stockTrans.stock
         }).done(function(data){
-            console.log('Data', data);
+            // console.log('Data', data);
             renderCashValue(data);
         }).fail(function(jqxhr, status){
             console.log('cash value AJAX request has failed', status, jqxhr);
