@@ -5,7 +5,7 @@
     var portfolioCompiler = Handlebars.compile($('#portfolio-template').text());
 
     portfolioData.tab = function() {
-        console.log('portfolio data tab called');
+        // console.log('portfolio data tab called');
         $('#portfolio-nav').on('click', function(){
             let token = localStorage.getItem('token');
             $.ajax({
