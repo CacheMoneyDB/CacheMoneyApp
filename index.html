@@ -20,7 +20,7 @@
     </script>
 
     <script id="purchase-template" type="type/x-handlebars-template">
-        <p>Current Portfolio Value: {{cashValue}}</p>
+        <p>Current Cash Available: {{cashValue}}</p>
     </script>
 
     <script id="user-template" type="text/x-handlebars-template">
@@ -49,7 +49,7 @@
                 <li><a href="/login">Login</a></li>
                 <li><a href="/search">Search</a></li>
                 <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/leaderboard" id="leaderboard-event">Leaderboard</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
         </nav>
@@ -84,11 +84,12 @@
             </section>
             <section id="account-info">
             <ul>
-                <li><h4>Account Balance</h4></li>
+                <li><h4>Transactions</h4></li>
                 <li>Purchase <input type="number" placeholder=" # of shares" label="Number to Buy"/><button type="submit" id="buy-button" >Buy</button></li>
                 <li>Sell <input type="number" placeholder=" # of shares" label="Number to Sell"/><button type="submit" id="sell-button">Sell</button></li>
                 <li><button type="submit">Watch</button></li> 
             </ul>
+            <section id="account-balance">
             </section>
         </section>
 

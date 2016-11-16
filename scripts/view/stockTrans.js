@@ -10,12 +10,10 @@
             stockTrans.shares = parseInt($(this).prev().val());
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
-            // stockTrans.cashEffect = -(stockTrans.shares * stockTrans.price);
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
             var token = 'Bearer ' + module.localStorage.getItem('token');
             console.log('here\'s the token', token);
             dataToSend = JSON.stringify(dataToSend);
-            // console.log('datatosend', dataToSend);
             $.ajax({
                 headers:{
                     Authorization: 'Bearer ' + module.localStorage.getItem('token')
@@ -29,19 +27,51 @@
                 type: 'PUT',
                 data: dataToSend                
             }).done(function(data){
-                console.log('data', data.cashValue);
-                // renderCashValue(data);
+                stockTrans.renderCashValue(data);
             }).fail(function(jqxhr, status){
                 console.log('buy AJAX request has failed', status, jqxhr);
             });
         });
-
     };
 
     stockTrans.addButton();
 
-    renderCashValue = function(data){
-        $('#account-info').empty().append(cashValueCompiler(data.cashValue));
+    stockTrans.addButton = function() {
+        $('#sell-button').on('click', function (event){
+            event.preventDefault();
+            stockTrans.shares = parseInt($(this).prev().val());
+            stockTrans.stock = stockSearch.data.symbol;
+            stockTrans.price = stockSearch.data.ask;
+            var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
+            var token = 'Bearer ' + module.localStorage.getItem('token');
+            console.log('here\'s the token', token);
+            dataToSend = JSON.stringify(dataToSend);
+            $.ajax({
+                headers:{
+                    Authorization: 'Bearer ' + module.localStorage.getItem('token')
+                },
+                contentType: 'application/json',
+                url: '/portfolios/sell',
+                headers: {
+                    'Authorization': token
+                },
+                contentType: 'application/json',
+                type: 'PUT',
+                data: dataToSend                
+            }).done(function(data){
+                stockTrans.renderCashValue(data);
+            }).fail(function(jqxhr, status){
+                console.log('buy AJAX request has failed', status, jqxhr);
+            });
+        });
+    };
+
+    stockTrans.addButton();
+
+    stockTrans.renderCashValue = function(data){
+        console.log('cash value', data.cashValue);
+        data.cashValue = (Math.round(data.cashValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
+        $('#account-balance').empty().append(cashValueCompiler(data));
     };
 
     module.stockTrans = stockTrans;
