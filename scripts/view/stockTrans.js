@@ -8,33 +8,21 @@
         $('#buy-button').on('click', function (event){
             console.log('hi');
             event.preventDefault();
-            // stockTrans.shares = $(this).prev().val();
-            // console.log('stockSearch stockTrans: ', stockSearch);
             stockTrans.shares = parseInt($(this).prev().val());
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
-            // var token = 'Bearer ' + module.localStorage.getItem('token');
+
             dataToSend = JSON.stringify(dataToSend);
             let token = localStorage.getItem('token');
             $.ajax({
-// beginning of prior conflict
+
                 beforeSend: (request) =>{
                     request.setRequestHeader('authorization', `Bearer ${token}`);
                 },
                 url: '/portfolios/buy',
                 contentType: 'application/json',
 
-//merge conflict here but i think it's the top one that's correct
-                // headers:{
-                    // Authorization: 'Bearer ' + module.localStorage.getItem('token')
-                // },
-                // contentType: 'application/json',
-                // url: '/portfolios/buy',
-                // headers: {
-                //     'Authorization': token
-                // },
-                // contentType: 'application/json',
                 type: 'PUT',
                 data: dataToSend
             }).done(function(data){
@@ -54,18 +42,14 @@
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
-            var token = 'Bearer ' + module.localStorage.getItem('token');
-            console.log('here\'s the token', token);
             dataToSend = JSON.stringify(dataToSend);
+            var token = localStorage.getItem('token');
             $.ajax({
-                headers:{
-                    Authorization: 'Bearer ' + module.localStorage.getItem('token')
+
+                beforeSend: (request) =>{
+                    request.setRequestHeader('authorization', `Bearer ${token}`);
                 },
-                contentType: 'application/json',
                 url: '/portfolios/sell',
-                headers: {
-                    'Authorization': token
-                },
                 contentType: 'application/json',
                 type: 'PUT',
                 data: dataToSend
