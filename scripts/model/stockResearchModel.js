@@ -11,9 +11,9 @@
         var chartData = {
             labels: dateArray,
             datasets: [{
-                    label: `${stockName} Value at Close`,
-                    data: closePriceArray
-                }]
+                label: `${stockName} Value at Close`,
+                data: closePriceArray
+            }]
         };
         stockResearchModel.plotStockChart(chartData, domElement);
     };
