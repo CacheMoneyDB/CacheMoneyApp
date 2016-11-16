@@ -9,15 +9,14 @@
                 type: 'POST',
                 contentType: 'application/json',
                 headers: {
-                    'Authorization': 'Bearer '+localStorage.token
+                    'Authorization': 'Bearer ' + localStorage.token
                 },
                 error: function(error) {
                     console.log(error);
                 }
             })
-            .done(function(user) {
-                console.log('logged in as: ', user);
-                login.loggedIn(user.username);
+            .done(function(username) {
+                login.loggedIn(username.username);
             });
         }
     });
