@@ -13,6 +13,11 @@
                 contentType: 'application/json',
                 url: '/portfolios/leaderboard'
             }).done(function(data){
+<<<<<<< HEAD
+                console.log('leaderboardData', data);
+                leaderBoardData = data;
+                leaderBoardData.renderStock();
+=======
                 // console.log('Data', data);
                 $('#leaderboard').empty();
                 module.leaderBoardModel.formatData(data, function(err, formattedData){
@@ -20,6 +25,7 @@
                         leaderBoardData.renderStock(leaderboardEntry);
                     });
                 });
+>>>>>>> 336e1ba7a802a48d91db6f3bd46f1be6ce5c9533
             }).fail(function(jqxhr, status){
                 console.log('leaderboard AJAX request has failed', status, jqxhr);
             });
