@@ -36,6 +36,7 @@
      }
    }],
    "key-spacing": [0, {"align": "value"}],
-   "no-underscore-dangle": 0
+   "no-underscore-dangle": 0,
+   "no-unused-vars": 1
  }
 }

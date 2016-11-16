@@ -6,26 +6,37 @@
 
     stockTrans.addButton = function() {
         $('#buy-button').on('click', function (event){
+            console.log('hi');
             event.preventDefault();
+            // stockTrans.shares = $(this).prev().val();
+            // console.log('stockSearch stockTrans: ', stockSearch);
             stockTrans.shares = parseInt($(this).prev().val());
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
-            var token = 'Bearer ' + module.localStorage.getItem('token');
-            console.log('here\'s the token', token);
+            // var token = 'Bearer ' + module.localStorage.getItem('token');
             dataToSend = JSON.stringify(dataToSend);
+            let token = localStorage.getItem('token');
             $.ajax({
-                headers:{
-                    Authorization: 'Bearer ' + module.localStorage.getItem('token')
+// beginning of prior conflict
+                beforeSend: (request) =>{
+                    request.setRequestHeader('authorization', `Bearer ${token}`);
                 },
-                contentType: 'application/json',
                 url: '/portfolios/buy',
-                headers: {
-                    'Authorization': token
-                },
                 contentType: 'application/json',
+
+//merge conflict here but i think it's the top one that's correct
+                // headers:{
+                    // Authorization: 'Bearer ' + module.localStorage.getItem('token')
+                // },
+                // contentType: 'application/json',
+                // url: '/portfolios/buy',
+                // headers: {
+                //     'Authorization': token
+                // },
+                // contentType: 'application/json',
                 type: 'PUT',
-                data: dataToSend                
+                data: dataToSend
             }).done(function(data){
                 stockTrans.renderCashValue(data);
             }).fail(function(jqxhr, status){
@@ -36,7 +47,7 @@
 
     stockTrans.addButton();
 
-    stockTrans.addButton = function() {
+    stockTrans.sellButton = function() {
         $('#sell-button').on('click', function (event){
             event.preventDefault();
             stockTrans.shares = parseInt($(this).prev().val());
@@ -57,7 +68,7 @@
                 },
                 contentType: 'application/json',
                 type: 'PUT',
-                data: dataToSend                
+                data: dataToSend
             }).done(function(data){
                 stockTrans.renderCashValue(data);
             }).fail(function(jqxhr, status){
@@ -66,7 +77,7 @@
         });
     };
 
-    stockTrans.addButton();
+    stockTrans.sellButton();
 
     stockTrans.renderCashValue = function(data){
         console.log('cash value', data.cashValue);

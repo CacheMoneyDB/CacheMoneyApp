@@ -72,8 +72,9 @@ describe('tests out the portfolio api', () => {
             .send(Steve)
             .then(res => {
                 assert.isOk(res.body.token);
+
                 tokenOne = res.body.token;
-                done()
+                done();
             })
             .catch(err => done(err));
     });
@@ -85,7 +86,7 @@ describe('tests out the portfolio api', () => {
             .then(res => {
                 assert.isOk(res.body.token);
                 tokenTwo = res.body.token;
-                done()
+                done();
             })
             .catch(err => done(err));
     });
@@ -127,7 +128,7 @@ describe('tests out the portfolio api', () => {
                 return request
                     .put('/portfolios/buy')
                     .set('Authorization', `Bearer ${tokenOne}`)
-                    .send(buyOrderTwo)
+                    .send(buyOrderTwo);
             })
             .then(resTwo => {
                 assert.isOk(resTwo.body);
@@ -157,11 +158,13 @@ describe('tests out the portfolio api', () => {
             .get('/portfolios')
             .set('Authorization', `Bearer ${tokenOne}`)
             .then(res => {
-                assert.isOk(res.body)
+                console.log('res.body portfolio: ', res.body);
+                assert.isOk(res.body);
                 done();
             })
             .catch(err => done(err));
     });
+
 
     it('gets every user in the database', done => {
         request
