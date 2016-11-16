@@ -3,6 +3,7 @@
     function stockResearchModel(objectArray, domElement) {
         var dateArray = [];
         var closePriceArray = [];
+        var stockName = objectArray[0].symbol;
         objectArray.forEach(function(stockObject) {
             dateArray.push(stockObject.date.split('T')[0]);
             closePriceArray.push(stockObject.close);
@@ -10,7 +11,7 @@
         var chartData = {
             labels: dateArray,
             datasets: [{
-                    label: "Stock Value at Close",
+                    label: `${stockName} Value at Close`,
                     data: closePriceArray
                 }]
         };
