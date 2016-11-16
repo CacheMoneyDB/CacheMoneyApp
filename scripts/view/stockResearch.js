@@ -13,6 +13,8 @@
             }).done(function(data){
                 // console.log('Data', data);
                 stockSearch.data = (data.snapshot[0]);
+                // pass the historical data along for now
+                stockResearchModel(data.historical, $('#stockchart')[0]);
                 stockSearch.renderStock();
             }).fail(function(jqxhr, status){
                 console.log('ticker AJAX request has failed', status, jqxhr);
