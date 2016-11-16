@@ -20,7 +20,7 @@
     </script>
 
     <script id="purchase-template" type="type/x-handlebars-template">
-        <p>Current Portfolio Value: {{cashValue}}</p>
+        <p>Current Cash Available: {{cashValue}}</p>
     </script>
 
     <script id="user-template" type="text/x-handlebars-template">
@@ -49,7 +49,7 @@
                 <li><a href="/login">Login</a></li>
                 <li><a href="/search">Search</a></li>
                 <li id='portfolioNav'><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/leaderboard" id="leaderboard-event">Leaderboard</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
         </nav>
@@ -57,13 +57,13 @@
     <main>
 
         <section id="login" class="main-section">
-            <form>
+            <form id="signin-form">
                 <h4>Existing users: Sign in here</h4>
                 <input type="text" name="user-name" id="user-name" placeholder="Name" label="Username: " required />
                 <input type="password" name="user-pw" id="user-pw" placeholder="Password" label="Password: " required />
                 <button type="submit" id="signin-button">Submit</button>
             </form>
-            <form id="signupForm">
+            <form id="signup-form">
                 <h4>New users: Sign up here</h4>
                 <input type="text" name="new-user-name" id="new-user-name" placeholder="Name" label="Username: " required />
                 <!--<input type="text" name="new-user-email" id="new-user-email" placeholder="Email" label="Email: " required />-->
@@ -77,15 +77,20 @@
                 <input type="text" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
                 <button type="submit" id="search-button">Submit</button>
             </section>
+
+            <canvas id="stockchart" class="charts"></canvas>
+
             <section id="stock-data">
             </section>
             <section id="account-info">
-            <ul>
-                <li><h4>Account Balance</h4></li>
-                <li>Purchase <input type="number" placeholder=" # of shares" label="Number to Buy"/><button type="submit" id="buy-button" >Buy</button></li>
-                <li>Sell <input type="number" placeholder=" # of shares" label="Number to Sell"/><button type="submit" id="sell-button">Sell</button></li>
-                <li><button type="submit">Watch</button></li>
-            </ul>
+              <ul>
+                  <li><h4>Transactions</h4></li>
+                  <li>Purchase <input type="number" placeholder=" # of shares" label="Number to Buy"/><button type="submit" id="buy-button" >Buy</button></li>
+                  <li>Sell <input type="number" placeholder=" # of shares" label="Number to Sell"/><button type="submit" id="sell-button">Sell</button></li>
+                  <li><button type="submit">Watch</button></li>
+              </ul>
+            </section>
+            <section id="account-balance">
             </section>
         </section>
 
@@ -109,9 +114,11 @@
         <li><a href="https://github.com/CacheMoneyDB">2016 CacheMoneyDB</a></li>
       </ul>
   </footer>
-  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
-  <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
+  <script type="text/javascript" src="scripts/model/stockResearchModel.js"></script>
   <script type="text/javascript" src="scripts/view/login.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
