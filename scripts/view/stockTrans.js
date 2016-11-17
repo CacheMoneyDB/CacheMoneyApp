@@ -27,6 +27,7 @@
             }).done(function(data){
                 stockTrans.renderCashValue(data);
             }).fail(function(jqxhr, status){
+                $('#search').append('<span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
             });
         });
@@ -55,6 +56,7 @@
             }).done(function(data){
                 stockTrans.renderCashValue(data);
             }).fail(function(jqxhr, status){
+                $('#search').append('<span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
             });
         });
