@@ -42,22 +42,23 @@
         <article class="" data-category="" data-content="{{portfolio}}">
           <h1>Your Portfolio</h1>
           <section id="portfolio-details">
-            <p>Stocks: {{#each stockKeyValue}}
                 <ul>
-                <li>{{key}} : {{stock}}</li>
+                    <h4>Stocks:</h4> {{#each stockKeyValue}}
+                    <li>{{key}} : {{stock}}</li>
+                {{/each}}
                 </ul>
-            {{/each}}<p>
-            <p>Cash Value: {{cashValue}}</p>
-            <p>Net Value: {{netValue}}</p>
-            <p>Stock Value: {{stockValue}}</p>
+                <ul>
+                    <li>Cash Value: {{cashValue}}</li>
+                    <li>Net Value: {{netValue}}</li>
+                    <li>Stock Value: {{stockValue}}</li>
+                </ul>
           </section>
           <section>
                 <h4>Instructions</h4>
-                <ul>
-                    <li>The cash balance above is how much you have available to purchase stock</li>
-                    <li>Go to the research page to look up stocks and add them to your portfolio!</li>
-                    <li>Make good picks and try to be one of our top 5 investors on the Leaderboard Page</li>
-                </ul>
+                <p>The cash balance above is how much you have available to purchase stock.
+                <br>Go to the research page to look up stocks and add them to your portfolio!
+                <br>Make good picks and try to be one of our top 5 investors on the Leaderboard Page.
+                </p>
             </section>
         </article>
     </script>
@@ -101,11 +102,10 @@
                 <button type="submit" id="signup-button">Submit</button>
             </form>
                 <h4>Instructions</h4>
-                <ul>
-                    <li>Welcome to Cache Money!</li>
-                    <li>This site allows you to play a fantasy stock game</li>
-                    <li>After you log in, go to the Portfolio Page to learn more...</li>
-                </ul>
+                <p>Welcome to Cache Money!<br>
+                This site allows you to play a fantasy stock game.<br>
+                After you log in, go to the Portfolio Page to learn more.
+                </p>
         </section>
 
         <section id="search" class="main-section">
@@ -129,12 +129,11 @@
             </section>
             <section>
                 <h4>Instructions</h4>
-                <ul>
-                    <li>Use the search section above to research stocks you are interested in purchasing</li>
-                    <li>You can use the buy and sell buttons to add/delete stocks from your portfolio </li>
-                    <li>The stocks you buy and sell will be at the price shown above</li>
-                    <li>Go to your portfolio page to view your entire portfolio!</li>
-                </ul>
+                <p>Use the search section above to research stocks you are interested in purchasing.
+                    <br>You can use the buy and sell buttons to add/delete stocks from your portfolio.
+                    <br>The stocks you buy and sell will be at the price shown above.
+                    <br>Go to your portfolio page to view your entire portfolio!
+                </p>
             </section>
         </section>
 
@@ -167,7 +166,7 @@
             </div>
             <div class="authors">
                 <h2>Tom Timmel</h2>
-                <img src="public/assets/dollar.svg"/>
+                <img src="public/assets/dollar.svg" width="300"/>
                 <p>Tom Timmel is new to the world of coding. He comes from a business management background working mostly in tourism in Alaska. Tom has a Bachelors degree in Business Administration from Bowling Green State University and a Master's degree in Inclusive Education from Nazareth College in Rochester, N.Y. Tom is happiest when he is outdoors during any season hiking, skiing, paddling, or playing Ultimate. Check out the following links for more information.</p>
                 <ul class="author-links">
                 <li><a href="https://github.com/TomTimmel" target="_blank">Github</a></li>

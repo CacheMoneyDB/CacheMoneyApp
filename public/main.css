@@ -52,6 +52,28 @@ nav ul {
   padding-right: 1em;
 }
 
+h4 {
+  margin-bottom: 0.1em;
+}
+
+p {
+  margin-top: 0.1em;
+}
+
+#about {
+  max-width: 560px;
+}
+
+.author-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.author-links li {
+  padding-right: 1em;
+}
+
+
 #login form,
 #logged-in {
   display: flex;
