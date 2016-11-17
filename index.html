@@ -8,6 +8,7 @@
     <link href="public/main.css" type="text/css" rel="stylesheet">
     <link href="public/layout.css" type="text/css" rel="stylesheet">
     <link href="public/module.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="public/assets/favicon.ico">
 
     <!-- Handlebar templates start-->
@@ -41,21 +42,24 @@
     <script id="portfolio-template" type="text/x-handlebars-template">
         <article class="" data-category="" data-content="{{portfolio}}">
           <h1>Your Portfolio</h1>
-          <p>Stocks: {{#each stockKeyValue}}
-            <ul>
-              <li>{{key}} : {{stock}}</li>
-            </ul>
-          {{/each}}<p>
-          <p>Cash Value: {{cashValue}}</p>
-          <p>Net Value: {{netValue}}</p>
-          <p>Stock Value: {{stockValue}}</p>
+          <section id="portfolio-details">
+                <ul>
+                    <h4>Stocks:</h4> {{#each stockKeyValue}}
+                    <li>{{key}} : {{stock}}</li>
+                {{/each}}
+                </ul>
+                <ul>
+                    <li>Cash Value: {{cashValue}}</li>
+                    <li>Net Value: {{netValue}}</li>
+                    <li>Stock Value: {{stockValue}}</li>
+                </ul>
+          </section>
           <section>
                 <h4>Instructions</h4>
-                <ul>
-                    <li>The cash balance above is how much you have available to purchase stock</li>
-                    <li>Go to the research page to look up stocks and add them to your portfolio!</li>
-                    <li>Make good picks and try to be one of our top 5 investors on the Leaderboard Page</li>
-                </ul>
+                <p>The cash balance above is how much you have available to purchase stock.
+                <br>Go to the research page to look up stocks and add them to your portfolio!
+                <br>Make good picks and try to be one of our top 5 investors on the Leaderboard Page.
+                </p>
             </section>
         </article>
     </script>
@@ -100,17 +104,16 @@
                 <button type="submit" id="signup-button">Submit</button>
             </form>
                 <h4>Instructions</h4>
-                <ul>
-                    <li>Welcome to Cache Money!</li>
-                    <li>This site allows you to play a fantasy stock game</li>
-                    <li>After you log in, go to the Portfolio Page to learn more...</li>
-                </ul>
+                <p>Welcome to Cache Money!<br>
+                This site allows you to play a fantasy stock game.<br>
+                After you log in, go to the Portfolio Page to learn more.
+                </p>
         </section>
 
         <section id="search" class="main-section">
             <section id="stock-search">
-                <input type="text" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
-                <button type="submit" id="search-button">Submit</button>
+                <input type="text" id="stock-search-input" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
+                <button type="submit" id="search-button">Search</button>
             </section>
             <div id="canvas-holder">
                 <canvas id="stockchart" class="charts"></canvas>
@@ -128,12 +131,11 @@
             </section>
             <section>
                 <h4>Instructions</h4>
-                <ul>
-                    <li>Use the search section above to research stocks you are interested in purchasing</li>
-                    <li>You can use the buy and sell buttons to add/delete stocks from your portfolio </li>
-                    <li>The stocks you buy and sell will be at the price shown above</li>
-                    <li>Go to your portfolio page to view your entire portfolio!</li>
-                </ul>
+                <p>Use the search section above to research stocks you are interested in purchasing.
+                    <br>You can use the buy and sell buttons to add/delete stocks from your portfolio.
+                    <br>The stocks you buy and sell will be at the price shown above.
+                    <br>Go to your portfolio page to view your entire portfolio!
+                </p>
             </section>
         </section>
 
@@ -198,12 +200,12 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
   <script type="text/javascript" src="scripts/model/stockResearchModel.js"></script>
   <script type="text/javascript" src="scripts/model/leaderboardModel.js"></script>
-  <script type="text/javascript" src="scripts/view/login.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
   <script type="text/javascript" src="scripts/view/leaderboard.js"></script>
   <script type="text/javascript" src="scripts/view/portfolio.js"></script>
 
+  <script type="text/javascript" src="scripts/view/login.js"></script>
   <script type="text/javascript" src="scripts/controller/controller.js"></script>
   <script type="text/javascript" src="scripts/controller/routes.js"></script>
 </body>
