@@ -17,6 +17,7 @@
                 // console.log('Data', data);
                 $('#leaderboard').empty();
                 module.leaderBoardModel.formatData(data, function(err, formattedData){
+                    $('#leaderboard').append('<h1>Leaderboard</h1>');
                     formattedData.forEach(function (leaderboardEntry){
                         leaderBoardData.renderStock(leaderboardEntry);
                     });
