@@ -4,6 +4,7 @@ body {
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 }
 
 header {
@@ -94,6 +95,10 @@ button:active {
   background-color: #555;
   color: #fff;
   border-color: #fff;
+}
+
+#logout-button {
+  margin: 1em auto;
 }
 
 .error-msg {
