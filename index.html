@@ -7,16 +7,25 @@
     <link href="vendor/normalize.css" type="text/css" rel="stylesheet">
     <link href="public/main.css" type="text/css" rel="stylesheet">
     <link href="public/layout.css" type="text/css" rel="stylesheet">
+    <link href="public/module.css" type="text/css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="public/assets/favicon.ico">
 
     <!-- Handlebar templates start-->
     <script id="search-template" type="type/x-handlebars-template">
         <div class="stock-dtls-wrapper">
-            <p>Stock: {{name}} Ticker: {{symbol}}</p>
-            <p>Price: {{ask}} Book Value {{bookValue}}</p>
-            <p>Today High:{{daysHigh}} Low:{{daysLow}}</p>
-            <p>PE Ratio: {{peRatio}} EBITDA {{ebitda}}</p>
-            <p>EPS {{earningsPerShare}} </p>
+            <ul id="left">
+                <li>Stock: {{name}}</li>
+                <li>Price: {{ask}}</li>
+                <li>Today High:{{daysHigh}}</li>
+                <li>PE Ratio: {{peRatio}}</li>
+                <li>EPS {{earningsPerShare}}</li>
+            </ul>
+            <ul id="right">
+                <li> Ticker: {{symbol}}</li>
+                <li> Book Value {{bookValue}}</li>
+                <li> Low:{{daysLow}}</li>
+                <li> EBITDA {{ebitda}}</li>
+            </ul>
         </div>
     </script>
 
