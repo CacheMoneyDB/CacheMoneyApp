@@ -64,7 +64,8 @@
                 type: 'PUT',
                 data: dataToSend
             }).done(function(data){
-                stockTrans.renderCashValue(data);  
+
+                stockTrans.renderCashValue(data);
                 $('#sell-button').after('<br><span class="msg">You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');   
             }).fail(function(jqxhr, status){
                 $('#sell-button').after('<br><span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');

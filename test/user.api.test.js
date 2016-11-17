@@ -17,13 +17,6 @@ const userAdmin = {
     roles: ['admin']
 };
 
-//set another user named admin
-//make sure admin can use things like delete
-
-//portfolios api tests.
-
-//test yahoo api.
-
 describe('user management', () => {
 
     before(done => {

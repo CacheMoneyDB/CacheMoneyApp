@@ -36,15 +36,4 @@ describe('user model', () => {
         });
     });
 
-
-    // it('checks value types correctly', done => {
-    //     const user = new User();
-    //     user.username = 'testUser';
-    //     user.password = 'string';
-    //
-    //     user.validate(err => {
-    //         assert.isOk(err);
-    //         done();
-    //     });
-    // });
 });
