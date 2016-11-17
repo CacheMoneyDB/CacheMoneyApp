@@ -32,7 +32,9 @@
 
 
     leaderBoardData.renderStock = function(leaderBoardDataEntry){
-        // console.log('SData', leaderBoardDataEntry);
+        leaderBoardDataEntry.cashValue = (Math.round(leaderBoardDataEntry.cashValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
+        leaderBoardDataEntry.netValue = (Math.round(leaderBoardDataEntry.netValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
+        leaderBoardDataEntry.stockValue = (Math.round(leaderBoardDataEntry.stockValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
         $('#leaderboard').append(leaderCompiler(leaderBoardDataEntry));
     };
 
