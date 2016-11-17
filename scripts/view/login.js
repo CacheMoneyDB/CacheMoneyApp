@@ -94,7 +94,7 @@
             $('#signup-form').show().trigger('reset');
             $('input').trigger('reset');
             $('#stock-data').empty();
-            $('#stock-chart').empty();
+            $('#canvas-holder').empty();
             $('#portfolio').empty();
         });
     };
