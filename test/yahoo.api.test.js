@@ -51,7 +51,7 @@ describe('yahoo api test', () => {
                 tokenOne = res.body.token;
                 return request
                         .post('/users/signup')
-                        .send(Charlie)
+                        .send(Charlie);
             })
             .then(resTwo => {
                 assert.isOk(resTwo.body.token);
@@ -59,14 +59,14 @@ describe('yahoo api test', () => {
                 return request
                         .put('/portfolios/buy')
                         .set('Authorization', `Bearer ${tokenOne}`)
-                        .send(buyOrderOne)
+                        .send(buyOrderOne);
             })
             .then(resThree => {
                 assert.isOk(resThree.body);
                 return request
                         .put('/portfolios/buy')
                         .set('Authorization', `Bearer ${tokenTwo}`)
-                        .send(buyOrderTwo)
+                        .send(buyOrderTwo);
             })
             .then(resFour => {
                 assert.isOk(resFour.body);

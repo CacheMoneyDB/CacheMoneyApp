@@ -4,8 +4,11 @@
   "description": "fantasy stock app with persistence",
   "main": "server.js",
   "scripts": {
+    "pretest": "eslint .",
     "test": "mocha",
-    "start": "node server.js"
+    "test:watch": "mocha -w",
+    "start": "eslint . && mocha && node server.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

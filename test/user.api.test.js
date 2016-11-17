@@ -68,7 +68,7 @@ describe('user management', () => {
     });
 
     it('cannot be the same username', done => {
-        badRequest('/users/signup', user, 'username awesomeUser already exists', done);
+        badRequest('/users/signup', user, 'Username awesomeUser already exists', done);
     });
 
     it('token is valid', done => {
