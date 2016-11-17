@@ -92,6 +92,10 @@
             $('.error-msg').empty();
             $('#signin-form').show().trigger('reset');
             $('#signup-form').show().trigger('reset');
+            $('input').trigger('reset');
+            $('#stock-data').empty();
+            $('#stock-chart').empty();
+            $('#portfolio').empty();
         });
     };
 
