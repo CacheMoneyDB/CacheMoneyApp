@@ -35,7 +35,7 @@
                 });
                 portfolioData.data.stockKeyValue = stockKeyValue;
                 portfolioData.renderStock();
-          })
+            })
           .catch(err => {
               console.log('portfolio err: ', err);
           });
@@ -45,6 +45,9 @@
     portfolioData.tab();
 
     portfolioData.renderStock = function(){
+        portfolioData.data.cashValue = (Math.round(portfolioData.data.cashValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
+        portfolioData.data.netValue = (Math.round(portfolioData.data.netValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
+        portfolioData.data.stockValue = (Math.round(portfolioData.data.stockValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
         var portfolioId = $('#portfolio');
         // console.log('portfolioData', stockSearch);
         portfolioId.empty().append(portfolioCompiler(portfolioData.data));
