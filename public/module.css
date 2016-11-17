@@ -1,0 +1,14 @@
+#stock-data {
+    border: solid black 1px;
+    background-color: #c4c4c4;
+}
+.stock-dtls-wrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.stock-dtls-wrapper li{
+    padding-bottom: .5em;
+}
+
