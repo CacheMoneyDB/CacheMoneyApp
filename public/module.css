@@ -2,12 +2,17 @@
 #canvas-holder {
     height: 300px;
     display: none;
-};
+}
+
+#stock-search {
+    padding-bottom: 1em;
+}
 
 #stock-data {
     border: solid black 1px;
     background-color: #c4c4c4;
 }
+
 .stock-dtls-wrapper{
     display:flex;
     flex-direction: row;

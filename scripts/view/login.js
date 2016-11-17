@@ -40,7 +40,7 @@
 
     login.clearAll = function() {
         $('#stock-data').empty();
-        $('#stockchart').empty();
+        $('#canvas-holder').hide();
         $('#portfolio-details').empty();
         $('#signin-form').show().trigger('reset');
         $('#signup-form').show().trigger('reset');
