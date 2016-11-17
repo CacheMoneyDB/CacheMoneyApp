@@ -2,6 +2,23 @@
 
     var login = {};
 
+    login.callPortfolio = function(token) {
+        $.ajax({
+            headers: {
+                authorization: `Bearer ${token}`
+            },
+            url: '/portfolios',
+            type: 'GET',
+            contentType: 'application/json',
+            error: function(error) {
+                console.log(error);
+            }
+        })
+        .done(data => {
+            stockTrans.renderCashValue(data)
+        });
+    };
+
     $(function() {
         if (localStorage.token) {
             $.ajax({
@@ -20,6 +37,18 @@
             });
         }
     });
+
+    login.clearAll = function() {
+        $('#stock-data').empty();
+        $('#canvas-holder').hide();
+        $('#portfolio-details').empty();
+        $('#signin-form').show().trigger('reset');
+        $('#signup-form').show().trigger('reset');
+        $('#stock-search-input').trigger('reset');
+        $('input').trigger('reset');
+        $('.error-msg').empty();
+        $('.msg').empty();
+    };
 
     login.newUser = function() {
         $('#signup-button').on('click', function(event) {
@@ -43,6 +72,7 @@
                 console.log('new user created: ', user);
                 localStorage.setItem('token', user.token);
                 login.loggedIn(user.username);
+                login.callPortfolio(user.token);
             });
         });
     };
@@ -69,8 +99,8 @@
                 console.log('user logged in as: ', user);
                 localStorage.setItem('token', user.token);
                 login.loggedIn(user.username);
+                login.callPortfolio(user.token);
             });
-
         });
     };
 
@@ -79,6 +109,7 @@
         $('#signin-form').hide();
         $('#signup-form').hide();
         $('#logged-in').hide();
+        $('input').trigger('reset');
         $('#login')
             .prepend('<section id="logged-in"><span>Welcome! You are logged in as ' + user + '.</span><button type="button" id="logout-button">Log Out</button></section>');
         login.logOut();
@@ -87,18 +118,13 @@
     login.logOut = function() {
         $('#logout-button').on('click', function(event) {
             event.preventDefault();
+            login.clearAll();
             localStorage.removeItem('token');
             $('#logged-in').html('You have logged out. See you next time!');
-            $('.error-msg').empty();
-            $('#signin-form').show().trigger('reset');
-            $('#signup-form').show().trigger('reset');
-            $('input').trigger('reset');
-            $('#stock-data').empty();
-            $('#stock-chart').empty();
-            $('#portfolio').empty();
         });
     };
 
+    login.logOut();
     login.newUser();
     login.existingUser();
 
