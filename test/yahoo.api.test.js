@@ -7,10 +7,10 @@ const app = require('../lib/app');
 chai.use(chaiHttp);
 
 describe('yahoo api test', () => {
-    
+
     const request = chai.request(app);
     const stockTicker = 'GOOGL';
-    
+
     const Jared = {
         username: 'Jared Vennett',
         password: 'short'
@@ -75,7 +75,9 @@ describe('yahoo api test', () => {
             .catch(err => done(err));
     });
 
-    it('makes a /GET request for a certain stock using the API route', done => {
+    it('makes a /GET request for a certain stock using the API route', function(done){
+        this.timeout = 5000;
+
         request
             .get(`/yapi?stocks=${stockTicker}`)
             .then(res => {
@@ -86,7 +88,8 @@ describe('yahoo api test', () => {
             .catch(err => done(err));
     });
 
-    it('makes a /GET request to make a daily update to the server to update everyones portfolio', done => {
+    it('makes a /GET request to make a daily update to the server to update everyones portfolio', function(done){
+        this.timeout = 5000;
         request
             .get('/yapi/dailyUpdate')
             .then(res => {
