@@ -2,6 +2,8 @@
 #canvas-holder {
     height: 300px;
     display: none;
+    max-width: 95vw;
+    border: 1px solid black;
 }
 
 #stock-search {
@@ -13,13 +15,13 @@
     background-color: #c4c4c4;
 }
 
-.stock-dtls-wrapper{
-    display:flex;
+.stock-dtls-wrapper {
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.stock-dtls-wrapper li{
+.stock-dtls-wrapper li {
     padding-bottom: .5em;
 }
 
