@@ -45,14 +45,12 @@ nav ul {
   margin-bottom: 0.4em;
 }
 
-nav ul li {
-}
-
-/*.main-section {
+.main-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}*/
+  padding-left: 1em;
+  padding-right: 1em;
+}
 
 #login form,
 #logged-in {
@@ -96,3 +94,4 @@ footer ul li {
   margin-left: 1em;
   margin-right: 1em;
 }
+
