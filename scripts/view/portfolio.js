@@ -21,19 +21,22 @@
             })
             .then(data => {
                 console.log('my own data', data);
+                stockTrans.renderCashValue(data);
                 portfolioData.data = data;
-                var stockArr = Object.keys(portfolioData.data.stocks);
-                var stockKeyValue = stockArr.filter((key) => {
-                    if (portfolioData.data.stocks[key] !== 0) {
-                        return key;
-                    };
-                }).map((key) => {
-                    return {
-                        key: key, //the name of the stock that comes from stockArr
-                        stock: portfolioData.data.stocks[key] //the # of stocks you own
-                    };
-                });
-                portfolioData.data.stockKeyValue = stockKeyValue;
+                if ('stocks' in data) {
+                    var stockArr = Object.keys(portfolioData.data.stocks);
+                    var stockKeyValue = stockArr.filter((key) => {
+                        if (portfolioData.data.stocks[key] !== 0) {
+                            return key;
+                        };
+                    }).map((key) => {
+                        return {
+                            key: key, //the name of the stock that comes from stockArr
+                            stock: portfolioData.data.stocks[key] //the # of stocks you own
+                        };
+                    });
+                    portfolioData.data.stockKeyValue = stockKeyValue;
+                };
                 portfolioData.renderStock();
           })
           .catch(err => {
