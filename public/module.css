@@ -7,8 +7,14 @@
 }
 
 #stock-search {
-    padding-bottom: 1em;
-}
+    padding-top: 1em;
+    padding-bottom: 2em;
+    }
+
+#stock-search,
+#account-info {
+    margin-left: 5vw;
+    }
 
 #stock-data {
     border: solid black 1px;
