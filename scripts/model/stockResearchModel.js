@@ -22,6 +22,7 @@
 
     //TODO: determine if this should go in the view
     stockResearchModel.plotStockChart = function(plotData, domNode) {
+        $('#canvas-holder').fadeIn();
         var canvasContext = domNode.getContext('2d');
         // canvasContext.canvas.width = 500;
         // canvasContext.canvas.height = 400;
