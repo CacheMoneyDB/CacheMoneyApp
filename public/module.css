@@ -1,3 +1,9 @@
+
+#canvas-holder {
+    height: 300px;
+    display: none;
+};
+
 #stock-data {
     border: solid black 1px;
     background-color: #c4c4c4;
@@ -12,3 +18,9 @@
     padding-bottom: .5em;
 }
 
+/*@media only screen and (min-width: 820px) {
+  #canvas-holder {
+      max-width: 500px;
+      max-height: 400px;
+  }
+}*/

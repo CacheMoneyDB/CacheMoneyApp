@@ -22,9 +22,10 @@
 
     //TODO: determine if this should go in the view
     stockResearchModel.plotStockChart = function(plotData, domNode) {
+        $('#canvas-holder').fadeIn();
         var canvasContext = domNode.getContext('2d');
-        canvasContext.canvas.width = 500;
-        canvasContext.canvas.height = 400;
+        // canvasContext.canvas.width = 500;
+        // canvasContext.canvas.height = 400;
         var gradient = canvasContext.createLinearGradient(0,0,0,460);
         gradient.addColorStop(0, 'rgba(60, 179, 113, 0.8)');
         gradient.addColorStop(1, 'rgba(25, 25, 112, 0.8)');

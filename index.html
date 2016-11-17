@@ -75,8 +75,8 @@
         <nav>
             <ul>
                 <li><a href="/login">Login</a></li>
-                <li id='portfolio-nav'><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/search">Search</a></li>
+                <li id="portfolio-nav"><a href="/portfolio">Portfolio</a></li>
+                <li id="search-nav"><a href="/search">Search</a></li>
                 <li><a href="/leaderboard" id="leaderboard-event">Leaderboard</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
@@ -111,7 +111,9 @@
                 <input type="text" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
                 <button type="submit" id="search-button">Submit</button>
             </section>
-            <canvas id="stockchart" class="charts"></canvas>
+            <div id="canvas-holder">
+                <canvas id="stockchart" class="charts"></canvas>
+            </div>
             <section id="stock-data">
             </section>
             <section id="account-info">
@@ -184,7 +186,7 @@
     <footer>
       <ul>
         <li><a href="https://github.com/CacheMoneyDB">2016 CacheMoneyDB</a></li>
-        <li>Powered by Yahoo Finance-API</li>
+        <li>Powered by <a href="http://finance.yahoo.com/">Yahoo Finance</a></li>
       </ul>
   </footer>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
