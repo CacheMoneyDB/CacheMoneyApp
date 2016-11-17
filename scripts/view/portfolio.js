@@ -39,9 +39,9 @@
                 };
                 portfolioData.renderStock();
             })
-          .catch(err => {
-              console.log('portfolio err: ', err);
-          });
+            .catch(err => {
+                console.log('portfolio err: ', err);
+            });
         });
     };
 

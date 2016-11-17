@@ -2,6 +2,23 @@
 
     var login = {};
 
+    login.callPortfolio = function(token) {
+        $.ajax({
+            headers: {
+                authorization: `Bearer ${token}`
+            },
+            url: '/portfolios',
+            type: 'GET',
+            contentType: 'application/json',
+            error: function(error) {
+                console.log(error);
+            }
+        })
+        .done(data => {
+            stockTrans.renderCashValue(data)
+        });
+    };
+
     $(function() {
         if (localStorage.token) {
             $.ajax({
@@ -43,6 +60,7 @@
                 console.log('new user created: ', user);
                 localStorage.setItem('token', user.token);
                 login.loggedIn(user.username);
+                login.callPortfolio(user.token);
             });
         });
     };
@@ -69,8 +87,8 @@
                 console.log('user logged in as: ', user);
                 localStorage.setItem('token', user.token);
                 login.loggedIn(user.username);
+                login.callPortfolio(user.token);
             });
-
         });
     };
 
@@ -96,6 +114,7 @@
             $('#stock-data').empty();
             $('#stock-chart').empty();
             $('#portfolio').empty();
+            $('#account-balance').empty();
         });
     };
 
