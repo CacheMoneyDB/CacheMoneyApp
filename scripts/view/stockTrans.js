@@ -64,8 +64,8 @@
                 type: 'PUT',
                 data: dataToSend
             }).done(function(data){
-                stockTrans.renderCashValue(data);  
-                $('#account-info ul').append('<span class="msg">You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');   
+                stockTrans.renderCashValue(data);
+                $('#account-info ul').append('<span class="msg">You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');
             }).fail(function(jqxhr, status){
                 $('#search').append('<span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
