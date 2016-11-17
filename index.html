@@ -41,14 +41,16 @@
     <script id="portfolio-template" type="text/x-handlebars-template">
         <article class="" data-category="" data-content="{{portfolio}}">
           <h1>Your Portfolio</h1>
-          <p>Stocks: {{#each stockKeyValue}}
-            <ul>
-              <li>{{key}} : {{stock}}</li>
-            </ul>
-          {{/each}}<p>
-          <p>Cash Value: {{cashValue}}</p>
-          <p>Net Value: {{netValue}}</p>
-          <p>Stock Value: {{stockValue}}</p>
+          <section id="portfolio-details">
+            <p>Stocks: {{#each stockKeyValue}}
+                <ul>
+                <li>{{key}} : {{stock}}</li>
+                </ul>
+            {{/each}}<p>
+            <p>Cash Value: {{cashValue}}</p>
+            <p>Net Value: {{netValue}}</p>
+            <p>Stock Value: {{stockValue}}</p>
+          </section>
           <section>
                 <h4>Instructions</h4>
                 <ul>
@@ -108,8 +110,8 @@
 
         <section id="search" class="main-section">
             <section id="stock-search">
-                <input type="text" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
-                <button type="submit" id="search-button">Submit</button>
+                <input type="text" id="stock-search-input" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
+                <button type="submit" id="search-button">Search</button>
             </section>
             <div id="canvas-holder">
                 <canvas id="stockchart" class="charts"></canvas>
@@ -195,12 +197,12 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
   <script type="text/javascript" src="scripts/model/stockResearchModel.js"></script>
   <script type="text/javascript" src="scripts/model/leaderboardModel.js"></script>
-  <script type="text/javascript" src="scripts/view/login.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
   <script type="text/javascript" src="scripts/view/leaderboard.js"></script>
   <script type="text/javascript" src="scripts/view/portfolio.js"></script>
 
+  <script type="text/javascript" src="scripts/view/login.js"></script>
   <script type="text/javascript" src="scripts/controller/controller.js"></script>
   <script type="text/javascript" src="scripts/controller/routes.js"></script>
 </body>

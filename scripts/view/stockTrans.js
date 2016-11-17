@@ -32,7 +32,7 @@
                 stockTrans.renderCashValue(data);
                 $('#account-info ul').append('<span class="msg">You bought ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');
             }).fail(function(jqxhr, status){
-                $('#search').append('<span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
+                $('#buy-button').after('<br><span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
             });
         });
@@ -65,9 +65,9 @@
                 data: dataToSend
             }).done(function(data){
                 stockTrans.renderCashValue(data);  
-                $('#account-info ul').append('<span class="msg">You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');   
+                $('#sell-button').after('<br><span class="msg">You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');   
             }).fail(function(jqxhr, status){
-                $('#search').append('<span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
+                $('#sell-button').after('<br><span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
             });
         });
