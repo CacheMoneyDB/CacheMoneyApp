@@ -76,7 +76,7 @@ describe('yahoo api test', () => {
     });
 
     it('makes a /GET request for a certain stock using the API route', function(done){
-        this.timeout = 5000;
+        this.timeout(5000);
 
         request
             .get(`/yapi?stocks=${stockTicker}`)
@@ -89,7 +89,7 @@ describe('yahoo api test', () => {
     });
 
     it('makes a /GET request to make a daily update to the server to update everyones portfolio', function(done){
-        this.timeout = 5000;
+        this.timeout(5000);
         request
             .get('/yapi/dailyUpdate')
             .then(res => {
