@@ -6,7 +6,6 @@
 
     stockTrans.addButton = function() {
         $('#buy-button').on('click', function (event){
-            console.log('hi');
             event.preventDefault();
             stockTrans.shares = parseInt($(this).prev().val());
             stockTrans.stock = stockSearch.data.symbol;
