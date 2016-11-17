@@ -153,7 +153,8 @@ describe('tests out the portfolio api', () => {
             .catch(err => done(err));
     });
 
-    it('uses a get request to get updated portfolio', done => {
+    it('uses a get request to get updated portfolio', function(done){
+        this.timeout(5000);
         request
             .get('/portfolios')
             .set('Authorization', `Bearer ${tokenOne}`)
