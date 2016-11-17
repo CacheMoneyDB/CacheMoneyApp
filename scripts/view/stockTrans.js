@@ -10,6 +10,9 @@
             $('.msg').empty();
             $('.error-msg').empty();
             stockTrans.shares = parseInt($(this).prev().val());
+            if (!stockSearch.data) {
+                $('#buy-button').after('<br><span class="error-msg">You must search for a stock before buying.</span>');
+            }
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
@@ -43,6 +46,9 @@
             $('.msg').empty();
             $('.error-msg').empty();
             stockTrans.shares = parseInt($(this).prev().val());
+            if (!stockSearch.data) {
+                $('#sell-button').after('<br><span class="error-msg">You must search for a stock before selling.</span>');
+            }
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
