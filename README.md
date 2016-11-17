@@ -20,8 +20,8 @@ Go to the leaderboard to see how you match up against the best!
 
 
 #Authors
-Chris Brunner
-Michell Sri
+Chris Bruner
+Michelle Sri
 Niilo Smeds
 Tom Timmel
 
