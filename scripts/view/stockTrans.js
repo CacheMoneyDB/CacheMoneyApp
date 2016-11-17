@@ -7,11 +7,12 @@
     stockTrans.addButton = function() {
         $('#buy-button').on('click', function (event){
             event.preventDefault();
+            $('.msg').empty();
+            $('.error-msg').empty();
             stockTrans.shares = parseInt($(this).prev().val());
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
-            console.log(dataToSend);
             dataToSend = JSON.stringify(dataToSend);
             let token = localStorage.getItem('token');
             $.ajax({
@@ -26,6 +27,7 @@
                 data: dataToSend
             }).done(function(data){
                 stockTrans.renderCashValue(data);
+                $('#account-info ul').append('<span class="msg">You bought ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');
             }).fail(function(jqxhr, status){
                 $('#search').append('<span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
@@ -38,6 +40,8 @@
     stockTrans.sellButton = function() {
         $('#sell-button').on('click', function (event){
             event.preventDefault();
+            $('.msg').empty();
+            $('.error-msg').empty();
             stockTrans.shares = parseInt($(this).prev().val());
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
@@ -54,7 +58,8 @@
                 type: 'PUT',
                 data: dataToSend
             }).done(function(data){
-                stockTrans.renderCashValue(data);
+                stockTrans.renderCashValue(data);  
+                $('#account-info ul').append('<span class="msg">You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');   
             }).fail(function(jqxhr, status){
                 $('#search').append('<span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);

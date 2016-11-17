@@ -80,6 +80,11 @@ button:active {
   color: red;
 }
 
+.msg {
+  color: blue;
+  font-size: 0.8em;
+}
+
 footer ul {
   display: flex;
   justify-content: space-around;
