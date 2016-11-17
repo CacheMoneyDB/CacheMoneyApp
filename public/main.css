@@ -35,6 +35,10 @@ a:hover {
   opacity: 0.5;
 }
 
+input {
+  margin: 0.2em;
+}
+
 ul {
   list-style: none;
   padding-left: 0;
