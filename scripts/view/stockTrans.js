@@ -11,7 +11,7 @@
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
             var dataToSend = {stock: stockTrans.stock, shares: stockTrans.shares, price: stockTrans.price};
-
+            console.log(dataToSend);
             dataToSend = JSON.stringify(dataToSend);
             let token = localStorage.getItem('token');
             $.ajax({

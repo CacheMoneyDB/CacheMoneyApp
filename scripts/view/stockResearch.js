@@ -14,20 +14,25 @@
             }).done(function(data){
                 if(data.historical.length === 0) {
                     $('#stock-search').append('<br><span class="error-msg">Please enter a valid stock ticker.</span>');
-                }
-                stockSearch.data = (data.snapshot[0]);
+                };
+                if(!data.snapshot[0].ask) {
+                    data.snapshot[0].ask = data.historical[data.historical.length - 1].close;
+                    data.snapshot[0].daysLow = data.historical[data.historical.length - 1].low;
+                    data.snapshot[0].daysHigh = data.historical[data.historical.length - 1].high;
+                };
+                stockSearch.data = data.snapshot[0];
                 // pass the historical data along for now
                 stockResearchModel(data.historical, $('#stockchart')[0]);
-                stockSearch.renderStock();
+                stockSearch.renderStock(data.snapshot[0]);
             });
         });
     };
 
     stockSearch.addButton();
 
-    stockSearch.renderStock = function(){
+    stockSearch.renderStock = function(snapShot){
         // console.log('SData', stockSearch);
-        $('#stock-data').empty().append(stockCompiler(stockSearch.data));
+        $('#stock-data').empty().append(stockCompiler(snapShot));
     };
 
     module.stockSearch = stockSearch;
