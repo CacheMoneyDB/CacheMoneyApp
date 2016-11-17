@@ -65,12 +65,13 @@
     </script>
 
     <script id="leader-template" type="text/x-handlebars-template">
-        <h2>{{place}}. Name: {{user}}</h2>
-        <ul>
-            <li>Cash Value: {{cashValue}}</li>
-            <li>Stock Value: {{stockValue}}</li>
-            <li>Total Value: {{netValue}}</li>
-        </ul>
+        <tr>
+            <td>{{place}}.</td>
+            <td>{{user}}</td>
+            <td>{{cashValue}}</td>
+            <td>{{stockValue}}</td>
+            <td>{{netValue}}</td>
+        </tr>
     </script>
 </head>
 <body>
@@ -142,6 +143,8 @@
         </section>
 
         <section id="leaderboard" class="main-section">
+            <table id="leaderboard-table">
+            </table>
         </section>
 
         <section id="about" class="main-section">
@@ -167,7 +170,7 @@
             </div>
             <div class="authors">
                 <h2>Tom Timmel</h2>
-                <img src="public/assets/dollar.svg" width="300"/>
+                <img src="public/assets/Tom Web.jpg" width="300"/>
                 <p>Tom Timmel is new to the world of coding. He comes from a business management background working mostly in tourism in Alaska. Tom has a Bachelors degree in Business Administration from Bowling Green State University and a Master's degree in Inclusive Education from Nazareth College in Rochester, N.Y. Tom is happiest when he is outdoors during any season hiking, skiing, paddling, or playing Ultimate. Check out the following links for more information.</p>
                 <ul class="author-links">
                 <li><a href="https://github.com/TomTimmel" target="_blank">Github</a></li>
