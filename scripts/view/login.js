@@ -26,7 +26,7 @@
                 type: 'POST',
                 contentType: 'application/json',
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.token
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
                 error: function(error) {
                     console.log(error);
@@ -115,7 +115,7 @@
     };
 
     login.logOut = function() {
-        $('#logout-button').on('click', function(event) {
+        $('#logout-button').on('click touchstart', function(event) {
             event.preventDefault();
             login.clearAll();
             localStorage.removeItem('token');
