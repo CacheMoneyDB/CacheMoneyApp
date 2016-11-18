@@ -45,6 +45,19 @@ th {
     background-color: #5673a3;
 }
 
+/*have CSS not display until those items are clicked*/
+#search, #portfolio, #leaderboard, #about {
+    display: none;
+}
+
+#about {
+    text-align: center;
+}
+
+#about p {
+    text-align: justify;
+}
+
 @media only screen and (max-width: 600px) {
   table {
       font-size: 0.7em;
