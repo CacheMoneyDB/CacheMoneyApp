@@ -6,6 +6,7 @@
 
     portfolioData.tab = function() {
         $('#portfolio-nav').on('click', function(){
+            portfolioCtrl.show(); //check out
             let token = localStorage.getItem('token');
             $.ajax({
                 headers: {
