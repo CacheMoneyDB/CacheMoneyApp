@@ -1,6 +1,6 @@
 
 #canvas-holder {
-    height: 300px;
+    height: 18em;
     display: none;
     max-width: 95vw;
     border: 1px solid black;
@@ -59,8 +59,15 @@ th {
 }
 
 @media only screen and (max-width: 600px) {
-  table {
-      font-size: 0.7em;
-      max-width: 95vw;
-  }
+    table {
+        font-size: 0.7em;
+        max-width: 95vw;
+    }
+
+    #canvas-holder {
+        height: 100%;
+        display: none;
+        max-width: 95vw;
+        border: 1px solid black;
+    }
 }
