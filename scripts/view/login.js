@@ -51,8 +51,8 @@
     };
 
     login.newUser = function() {
-        $('#signup-button').on('click touchstart', function(event) {
-            // event.preventDefault();
+        $('#signup-button').on('submit', function(event) {
+            event.preventDefault();
             $('.error-msg').empty();
             $('#logged-in').empty();
             let data = {};
@@ -77,7 +77,7 @@
     };
 
     login.existingUser = function() {
-        $('#signin-button').on('click touchstart', function(event) {
+        $('#signin-button').on('submit', function(event) {
             event.preventDefault();
             $('.error-msg').empty();
             $('#logged-in').empty();
@@ -115,7 +115,7 @@
     };
 
     login.logOut = function() {
-        $('#logout-button').on('click', function(event) {
+        $('#logout-button').on('submit', function(event) {
             event.preventDefault();
             login.clearAll();
             localStorage.removeItem('token');
