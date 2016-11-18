@@ -46,14 +46,14 @@
         $('#signup-form').show().trigger('reset');
         $('#stock-search-input').trigger('reset');
         $('input').trigger('reset');
-        $('.error-msg').empty();
-        $('.msg').empty();
+        $('.error-msg').remove();
+        $('.msg').remove();
     };
 
     login.newUser = function() {
         $('#signup-button').on('click touchstart', function(event) {
             event.preventDefault();
-            $('.error-msg').empty();
+            $('.error-msg').remove();
             $('#logged-in').empty();
             let data = {};
             data.username = $('#new-user-name').val();
@@ -79,7 +79,7 @@
     login.existingUser = function() {
         $('#signin-button').on('click touchstart', function(event) {
             event.preventDefault();
-            $('.error-msg').empty();
+            $('.error-msg').remove();
             $('#logged-in').empty();
             let data = {};
             data.username = $('#user-name').val();
