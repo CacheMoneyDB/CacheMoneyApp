@@ -35,6 +35,10 @@ a:hover {
   opacity: 0.5;
 }
 
+input {
+  margin: 0.2em;
+}
+
 ul {
   list-style: none;
   padding-left: 0;
@@ -73,7 +77,6 @@ p {
 .author-links li {
   padding-right: 1em;
 }
-
 
 #login form,
 #logged-in {
