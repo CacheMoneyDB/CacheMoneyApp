@@ -7,7 +7,13 @@
             var $this = $(this);
             var text = $this.find('li').text().toLowerCase();
             $('.main-section').hide();
-            $(`#${text}`).fadeIn();
+            if(module.localStorage.getItem('token') && text === 'login') {
+                $('#signin-form').hide();
+                $('#signup-form').hide();
+                $('#login').fadeIn();
+            } else {
+                $(`#${text}`).fadeIn();
+            };
         });
     }; 
 
