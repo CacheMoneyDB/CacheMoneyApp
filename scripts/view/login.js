@@ -26,7 +26,7 @@
                 type: 'POST',
                 contentType: 'application/json',
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem()
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
                 error: function(error) {
                     console.log(error);
