@@ -5,7 +5,7 @@
     var portfolioCompiler = Handlebars.compile($('#portfolio-template').text());
 
     portfolioData.tab = function() {
-        $('#portfolio-nav').on('click', function(){
+        $('#portfolio-nav').on('click touchstart', function(){
             let token = localStorage.getItem('token');
             $.ajax({
                 headers: {

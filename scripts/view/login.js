@@ -51,7 +51,7 @@
     };
 
     login.newUser = function() {
-        $('#signup-button').on('click', function(event) {
+        $('#signup-button').on('click touchstart', function(event) {
             event.preventDefault();
             $('.error-msg').empty();
             $('#logged-in').empty();
@@ -77,7 +77,7 @@
     };
 
     login.existingUser = function() {
-        $('#signin-button').on('click', function(event) {
+        $('#signin-button').on('click touchstart', function(event) {
             event.preventDefault();
             $('.error-msg').empty();
             $('#logged-in').empty();
