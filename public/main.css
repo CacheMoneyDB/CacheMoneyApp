@@ -99,6 +99,10 @@ p {
   padding-right: 1em;
 }
 
+#login {
+  margin-top: 1em;
+}
+
 #login form,
 #logged-in {
   display: flex;
