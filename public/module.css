@@ -38,11 +38,9 @@ table{
 #leaderboard th, td{
     padding: .3em;
     font-size: 1.5em;
-     border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
-tr:nth-child(even) {
-    background-color: #aec4e8
-    }
+
 th {
     background-color: #5673a3;
 }
