@@ -77,7 +77,6 @@
     stockTrans.sellButton();
 
     stockTrans.renderCashValue = function(data){
-        console.log('cash value', data.cashValue);
         data.cashValue = (Math.round(data.cashValue*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
         $('#account-balance').empty().append(cashValueCompiler(data));
     };

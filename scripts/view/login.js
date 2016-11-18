@@ -69,7 +69,6 @@
                 }
             })
             .done(function(user) {
-                console.log('new user created: ', user);
                 localStorage.setItem('token', user.token);
                 login.loggedIn(user.username);
                 login.callPortfolio(user.token);
