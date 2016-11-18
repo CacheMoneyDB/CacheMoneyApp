@@ -8,6 +8,7 @@
     <link href="public/main.css" type="text/css" rel="stylesheet">
     <link href="public/layout.css" type="text/css" rel="stylesheet">
     <link href="public/module.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="public/assets/favicon.ico">
 
@@ -76,14 +77,19 @@
 </head>
 <body>
     <header>
-        <h1>CACHE MONEY</h1>
+        <h1>Cache Money</h1>
         <nav>
             <ul>
-                <li><a href="/login">Login</a></li>
+                <!--<li><a href="/login">Login</a></li>
                 <li id="portfolio-nav"><a href="/portfolio">Portfolio</a></li>
                 <li id="search-nav"><a href="/search">Search</a></li>
                 <li><a href="/leaderboard" id="leaderboard-event">Leaderboard</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="/about">About</a></li>-->
+                <a href="/login"><li>Login</li></a>
+                <a href="/portfolio" id="portfolio-nav"><li>Portfolio</li></a>
+                <a href="/search" id="search-nav"><li>Search</li></a>
+                <a href="/leaderboard" id="leaderboard-event"><li>Leaderboard</li></a>
+                <a href="/about"><li>About</li></a>
             </ul>
         </nav>
     </header>
@@ -149,7 +155,7 @@
 
         <section id="about" class="main-section">
             <h1>About Us</h1>
-            <p class="description">Cache Money was created by Chris, Michelle, Niilo and Tom.</p>
+            <h2 class="description">Cache Money was created by Chris, Michelle, Niilo and Tom.</h2>
             <div class="authors">
                 <h2>Niilo Smeds</h2>
                 <img src="public/assets/gumby.jpg"/>
@@ -162,7 +168,7 @@
             <div class="authors">
                 <h2>Chris Bruner</h2>
                 <img src="public/assets/chris.png" />
-                <p></p>
+                <p>Christopher Bruner finished his B.S. in Chemistry at California State Univeristy Long Beach and finished his Ph.D. in Physical Chemistry and Materials Engineering at Stanford University. His work experience as a product development engineer and data analyst at Intel opened up new horizons towards the field of computer science. To that end he is currently pursuing finishing a web development workshop lead by Code Fellows. He has working experience in statistics and data analysis, object-oriented programming, and relational databases. Specialties include data-driven problem solving, team collaborations and mentoring. His hobbies include video games, hiking, art, and reading books.</p>
                 <ul class="author-links">
                 <li><a href="" target="_blank">Github</a></li>
                 <li><a href="" target="_blank">LinkedIn</a></li>
@@ -194,19 +200,20 @@
         <li>Powered by <a href="http://finance.yahoo.com/">Yahoo Finance</a></li>
       </ul>
   </footer>
+  <script type="text/javascript" src="vendor/page.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
-  <script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <!--<script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>-->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
+  <!--<script type="text/javascript" src="scripts/controller/controller.js"></script>
+  <script type="text/javascript" src="scripts/controller/routes.js"></script>-->
+  <script type="text/javascript" src="scripts/controller/controllerjquery.js"></script>
   <script type="text/javascript" src="scripts/model/stockResearchModel.js"></script>
   <script type="text/javascript" src="scripts/model/leaderboardModel.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
   <script type="text/javascript" src="scripts/view/leaderboard.js"></script>
   <script type="text/javascript" src="scripts/view/portfolio.js"></script>
-
   <script type="text/javascript" src="scripts/view/login.js"></script>
-  <script type="text/javascript" src="scripts/controller/controller.js"></script>
-  <script type="text/javascript" src="scripts/controller/routes.js"></script>
 </body>
 </html>

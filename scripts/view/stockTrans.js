@@ -5,7 +5,7 @@
     var cashValueCompiler = Handlebars.compile($('#purchase-template').text());
 
     stockTrans.addButton = function() {
-        $('#buy-button').on('click', function (event){
+        $('#buy-button').on('click touchstart', function (event){
             event.preventDefault();
             $('.msg').empty();
             $('.error-msg').empty();
@@ -41,7 +41,7 @@
     stockTrans.addButton();
 
     stockTrans.sellButton = function() {
-        $('#sell-button').on('click', function (event){
+        $('#sell-button').on('click touchstart', function (event){
             event.preventDefault();
             $('.msg').empty();
             $('.error-msg').empty();
