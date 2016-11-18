@@ -37,7 +37,7 @@ table{
 
 #leaderboard th, td{
     padding: .3em;
-    font-size: 1.5em;
+    font-size: 1.3em;
     border-bottom: 1px solid #ddd;
 }
 
@@ -66,8 +66,5 @@ th {
 
     #canvas-holder {
         height: 100%;
-        display: none;
-        max-width: 95vw;
-        border: 1px solid black;
     }
 }
