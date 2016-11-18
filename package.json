@@ -40,8 +40,8 @@
     "mongoose": "^4.6.7",
     "morgan": "^1.7.0",
     "yahoo-finance": "^0.2.14"
-  },
-  "engines": {
-    "node": "6.6.0"
-  }
+  }//,
+  // "engines": {
+  //   "node": "6.6.0"
+  // }
 }
