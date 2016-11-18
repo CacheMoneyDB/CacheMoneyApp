@@ -8,7 +8,6 @@ describe('user model', () => {
         user.username = 'testUser';
         user.password = 'testPassword';
         user.roles = [];
-    // user.portfolioId = TODO: validate with portfolioId after portfolio schema updated
 
         user.validate(err => {
             if(!err) done();
