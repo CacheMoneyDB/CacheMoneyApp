@@ -5,11 +5,12 @@
     var leaderCompiler = Handlebars.compile($('#leader-template').text());
 
     leaderBoardData.tab = function() {
-        $('#leaderboard-event').on('click', function(){
+        $('#leaderboard-event').on('click touchstart', function(){
             $.ajax({
                 headers:{
                     Authorization: 'Bearer ' + module.localStorage.getItem('token')
                 },
+                type: 'GET',
                 contentType: 'application/json',
                 url: '/portfolios/leaderboard'
             }).done(function(data){

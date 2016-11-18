@@ -37,13 +37,13 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            fontSize: 20,
+                            fontSize: 16,
                             fontFamily: 'sans-serif'
                         }
                     }],
                     xAxes: [{
                         ticks: {
-                            fontSize: 20,
+                            fontSize: 16,
                             fontFamily: 'sans-serif'
                         }
                     }]

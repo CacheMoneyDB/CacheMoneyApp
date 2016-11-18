@@ -5,7 +5,7 @@
     var stockCompiler = Handlebars.compile($('#search-template').text());
 
     stockSearch.addButton = function() {
-        $('#search-button').on('click', function (event){
+        $('#search-button').on('click touchstart', function (event){
             event.preventDefault();
             $('.error-msg').empty();
             stockSearch.ticker = $(this).prev().val().toUpperCase();

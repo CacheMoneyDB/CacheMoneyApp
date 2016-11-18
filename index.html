@@ -80,11 +80,16 @@
         <h1>Cache Money</h1>
         <nav>
             <ul>
-                <li><a href="/login">Login</a></li>
+                <!--<li><a href="/login">Login</a></li>
                 <li id="portfolio-nav"><a href="/portfolio">Portfolio</a></li>
                 <li id="search-nav"><a href="/search">Search</a></li>
                 <li><a href="/leaderboard" id="leaderboard-event">Leaderboard</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="/about">About</a></li>-->
+                <a href="/login"><li>Login</li></a>
+                <a href="/portfolio" id="portfolio-nav"><li>Portfolio</li></a>
+                <a href="/search" id="search-nav"><li>Search</li></a>
+                <a href="/leaderboard" id="leaderboard-event"><li>Leaderboard</li></a>
+                <a href="/about"><li>About</li></a>
             </ul>
         </nav>
     </header>
@@ -195,18 +200,20 @@
         <li>Powered by <a href="http://finance.yahoo.com/">Yahoo Finance</a></li>
       </ul>
   </footer>
+  <script type="text/javascript" src="vendor/page.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
-  <script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <!--<script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>-->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
+  <!--<script type="text/javascript" src="scripts/controller/controller.js"></script>
+  <script type="text/javascript" src="scripts/controller/routes.js"></script>-->
+  <script type="text/javascript" src="scripts/controller/controllerjquery.js"></script>
   <script type="text/javascript" src="scripts/model/stockResearchModel.js"></script>
   <script type="text/javascript" src="scripts/model/leaderboardModel.js"></script>
   <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
   <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
   <script type="text/javascript" src="scripts/view/leaderboard.js"></script>
   <script type="text/javascript" src="scripts/view/portfolio.js"></script>
-  <script type="text/javascript" src="scripts/controller/controller.js"></script>
-  <script type="text/javascript" src="scripts/controller/routes.js"></script>
   <script type="text/javascript" src="scripts/view/login.js"></script>
 </body>
 </html>
