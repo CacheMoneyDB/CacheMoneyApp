@@ -69,6 +69,20 @@ p {
   max-width: 560px;
 }
 
+#about img {
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+#about a {
+  font-size: 0.9em;
+  color: #333;
+}
+
+.description {
+  text-align: center;
+}
+
 .author-links {
   display: flex;
   flex-direction: row;
