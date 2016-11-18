@@ -10,6 +10,7 @@
                 headers:{
                     Authorization: 'Bearer ' + module.localStorage.getItem('token')
                 },
+                type: 'GET',
                 contentType: 'application/json',
                 url: '/portfolios/leaderboard'
             }).done(function(data){

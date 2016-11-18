@@ -6,19 +6,16 @@
 
     portfolioData.tab = function() {
         $('#portfolio-nav').on('click touchstart', function(){
-            let token = localStorage.getItem('token');
+            // let token = localStorage.getItem('token');
             $.ajax({
                 headers: {
-                    authorization: `Bearer ${token}`
+                    Authorization: 'Bearer' + module.localStorage.getItem('token') 
                 },
-                url: '/portfolios',
                 type: 'GET',
                 contentType: 'application/json',
-                error: function(error) {
-                    console.log(error);
-                }
+                url: '/portfolios',
             })
-            .then(data => {
+            .done(data => {
                 stockTrans.renderCashValue(data);
                 portfolioData.data = data;
                 if ('stocks' in data) {
@@ -37,8 +34,8 @@
                 };
                 portfolioData.renderStock();
             })
-            .catch(err => {
-                console.log('portfolio err: ', err);
+            .fail((jqxhr, status) => {
+                console.log('portfolio err: ', jqxhr, status);
             });
         });
     };
