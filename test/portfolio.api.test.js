@@ -45,6 +45,31 @@ describe('tests out the portfolio api', () => {
         password: 'marvel'
     };
 
+    const Garbage = {
+        username: 'Garbage',
+        password: 'thisbigshort'
+    };
+
+    const Whatever = {
+        username: 'whatever',
+        password: 'thisbigshort'
+    };
+
+    const Anime = {
+        username: 'Anime',
+        password: 'thisbigshort'
+    };
+
+    const Movie = {
+        username: 'Movie',
+        password: 'thisbigshort'
+    };
+
+    const Laptop = {
+        username: 'Laptop',
+        password: 'thisbigshort'
+    };
+
     const buyOrderOne = {
         stock: 'AAPL',
         shares: 100,
@@ -118,6 +143,26 @@ describe('tests out the portfolio api', () => {
         userSignup(Tony, done);
     });
 
+    it('signs up new user Garbage', done => {
+        userSignup(Garbage, done);
+    });
+
+    it('signs up new user Whatever', done => {
+        userSignup(Whatever, done);
+    });
+
+    it('signs up new user Anime', done => {
+        userSignup(Anime, done);
+    });
+
+    it('signs up new user Movie', done => {
+        userSignup(Movie, done);
+    });
+
+    it('signs up new user Laptop', done => {
+        userSignup(Laptop, done);
+    });
+
     it('buys a list of stocks', done => {
         request
             .put('/portfolios/buy')
@@ -171,18 +216,18 @@ describe('tests out the portfolio api', () => {
             .get('/portfolios/all')
             .set('Authorization', `Bearer ${tokenTwo}`)
             .then(res => {
-                assert.equal(res.body.length, 6);
+                assert.equal(res.body.length, 11);
                 done();
             })
             .catch(err => done(err));
     });
 
-    it('gets top 5 users based on netvalue', done => {
+    it('gets top 10 users based on netvalue', done => {
         request
             .get('/portfolios/leaderboard')
             .set('Authorization', `Bearer ${tokenTwo}`)
             .then(res => {
-                assert.equal(res.body.length, 5);
+                assert.equal(res.body.length, 10);
                 done();
             })
             .catch(err => done(err));
