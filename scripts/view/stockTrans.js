@@ -7,11 +7,11 @@
     stockTrans.addButton = function() {
         $('#buy-button').on('click touchstart', function (event){
             event.preventDefault();
-            $('.msg').empty();
-            $('.error-msg').empty();
+            $('.msg').remove();
+            $('.error-msg').remove();
             stockTrans.shares = parseInt($(this).prev().val());
             if (!stockSearch.data) {
-                $('#buy-button').after('<br><span class="error-msg">You must search for a stock before buying.</span>');
+                $('#buy-button').after('<span class="error-msg"><br>You must search for a stock before buying.</span>');
             }
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
@@ -32,7 +32,7 @@
                 stockTrans.renderCashValue(data);
                 $('#account-info ul').append('<span class="msg">You bought ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');
             }).fail(function(jqxhr, status){
-                $('#buy-button').after('<br><span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
+                $('#buy-button').after('<span class="error-msg"><br>Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
             });
         });
@@ -43,11 +43,11 @@
     stockTrans.sellButton = function() {
         $('#sell-button').on('click touchstart', function (event){
             event.preventDefault();
-            $('.msg').empty();
-            $('.error-msg').empty();
+            $('.msg').remove();
+            $('.error-msg').remove();
             stockTrans.shares = parseInt($(this).prev().val());
             if (!stockSearch.data) {
-                $('#sell-button').after('<br><span class="error-msg">You must search for a stock before selling.</span>');
+                $('#sell-button').after('<span class="error-msg"><br>You must search for a stock before selling.</span>');
             }
             stockTrans.stock = stockSearch.data.symbol;
             stockTrans.price = stockSearch.data.ask;
@@ -66,9 +66,9 @@
             }).done(function(data){
 
                 stockTrans.renderCashValue(data);
-                $('#sell-button').after('<br><span class="msg">You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');   
+                $('#sell-button').after('<span class="msg"><br>You sold ' + stockTrans.shares + ' shares of ' + stockTrans.stock + '. Good job!');   
             }).fail(function(jqxhr, status){
-                $('#sell-button').after('<br><span class="error-msg">Error: ' + jqxhr.responseJSON.error + '</span>');
+                $('#sell-button').after('<span class="error-msg"><br>Error: ' + jqxhr.responseJSON.error + '</span>');
                 console.log('buy AJAX request has failed', status, jqxhr);
             });
         });

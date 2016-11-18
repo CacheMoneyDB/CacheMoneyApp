@@ -7,13 +7,13 @@
     stockSearch.addButton = function() {
         $('#search-button').on('click touchstart', function (event){
             event.preventDefault();
-            $('.error-msg').empty();
+            $('.error-msg').remove();
             stockSearch.ticker = $(this).prev().val().toUpperCase();
             $.ajax({
                 url: '/yapi?stocks=' + stockSearch.ticker
             }).done(function(data){
                 if(data.historical.length === 0) {
-                    $('#stock-search').append('<br><span class="error-msg">Please enter a valid stock ticker.</span>');
+                    $('#stock-search').append('<span class="error-msg"><br>Please enter a valid stock ticker.</span>');
                 };
                 if(!data.snapshot[0].ask) {
                     data.snapshot[0].ask = data.historical[data.historical.length - 1].close;
