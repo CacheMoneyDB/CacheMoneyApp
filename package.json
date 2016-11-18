@@ -1,0 +1,47 @@
+{
+  "name": "cachemoneyapp",
+  "version": "0.0.1",
+  "description": "fantasy stock app with persistence",
+  "main": "server.js",
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "mocha",
+    "test:watch": "mocha -w",
+    "start": "node server.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CacheMoneyDB/CacheMoneyApp.git"
+  },
+  "keywords": [
+    "stocks"
+  ],
+  "author": "Christopher Bruner, Niilo Smeds, Michelle Sri, and Tom Timmel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CacheMoneyDB/CacheMoneyApp/issues"
+  },
+  "homepage": "https://github.com/CacheMoneyDB/CacheMoneyApp#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.10.0",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "eslint": "^3.10.2",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.6.7",
+    "morgan": "^1.7.0",
+    "yahoo-finance": "^0.2.14"
+  },
+  "engines": {
+    "node": "6.8.0"
+  }
+}

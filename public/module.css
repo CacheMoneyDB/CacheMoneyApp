@@ -1,0 +1,70 @@
+
+#canvas-holder {
+    height: 18em;
+    display: none;
+    max-width: 95vw;
+    border: 1px solid black;
+}
+
+#stock-search {
+    padding-top: 0.5em;
+    padding-bottom: 2em;
+    text-align: center;
+    }
+
+#account-info {
+    margin-left: 1vw;
+    }
+
+#stock-data {
+    border: solid black 1px;
+    background-color: #ededed;
+}
+
+.stock-dtls-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.stock-dtls-wrapper li {
+    padding-bottom: .5em;
+}
+
+table{
+    margin-top: 3em;
+}
+
+#leaderboard th, td{
+    padding: .3em;
+    font-size: 1.3em;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #5673a3;
+}
+
+/*have CSS not display until those items are clicked*/
+#search, #portfolio, #leaderboard, #about {
+    display: none;
+}
+
+#about {
+    text-align: center;
+}
+
+#about p {
+    text-align: justify;
+}
+
+@media only screen and (max-width: 600px) {
+    table {
+        font-size: 0.7em;
+        max-width: 95vw;
+    }
+
+    #canvas-holder {
+        height: 100%;
+    }
+}

@@ -1,0 +1,152 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  width: 100vw;
+  background: url('/public/assets/dollar.svg');
+  background-size: 25px;
+  background-position: center;
+}
+
+h1 {
+  font-family: "Lobster";
+  text-align: center;
+  color: white;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+main {
+  flex: 1;
+  margin: 1em auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.5;
+}
+
+input {
+  margin: 0.2em;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.4em;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+h4 {
+  margin-bottom: 0.1em;
+}
+
+p {
+  margin-top: 0.1em;
+}
+
+#about {
+  max-width: 560px;
+}
+
+#about img {
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+#about a {
+  font-size: 0.9em;
+  color: #333;
+}
+
+.description {
+  text-align: center;
+}
+
+.author-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.author-links li {
+  padding-right: 1em;
+}
+
+#login {
+  margin-top: 1em;
+}
+
+#login form,
+#logged-in {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em auto;
+}
+
+button {
+  color: inherit;
+  background-color: #fff;
+  border-radius: 3px;
+  font-size: 0.9em;
+  border: 1px solid #000;
+  margin: 0.5em auto;
+}
+
+button:active {
+  background-color: #555;
+  color: #fff;
+  border-color: #fff;
+}
+
+#logout-button {
+  margin: 1em auto;
+}
+
+.error-msg {
+  color: red;
+}
+
+.msg {
+  color: blue;
+  font-size: 0.8em;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em;
+}
+
+footer ul li {
+  font-size: 0.8em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+

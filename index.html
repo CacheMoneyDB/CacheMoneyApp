@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CacheMoney</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="vendor/normalize.css" type="text/css" rel="stylesheet">
+    <link href="public/main.css" type="text/css" rel="stylesheet">
+    <link href="public/module.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="public/assets/favicon.ico">
+
+    <!-- Handlebar templates start-->
+    <script id="search-template" type="type/x-handlebars-template">
+        <div class="stock-dtls-wrapper">
+            <ul id="left">
+                <li>Stock: {{name}}</li>
+                <li>Price: {{ask}}</li>
+                <li>Today High:{{daysHigh}}</li>
+                <li>PE Ratio: {{peRatio}}</li>
+                <li>EPS {{earningsPerShare}}</li>
+            </ul>
+            <ul id="right">
+                <li> Ticker: {{symbol}}</li>
+                <li> Book Value {{bookValue}}</li>
+                <li> Low:{{daysLow}}</li>
+                <li> EBITDA {{ebitda}}</li>
+            </ul>
+        </div>
+    </script>
+
+    <script id="purchase-template" type="type/x-handlebars-template">
+        <p>Current Cash Available: {{cashValue}}</p>
+    </script>
+
+    <script id="portfolio-template" type="text/x-handlebars-template">
+        <article class="" data-category="" data-content="{{portfolio}}">
+          <h1>Your Portfolio</h1>
+          <section id="portfolio-details">
+                <ul>
+                    <h4>Stocks:</h4> {{#each stockKeyValue}}
+                    <li>{{key}} : {{stock}}</li>
+                {{/each}}
+                </ul>
+                <ul>
+                    <li>Cash Value: {{cashValue}}</li>
+                    <li>Net Value: {{netValue}}</li>
+                    <li>Stock Value: {{stockValue}}</li>
+                </ul>
+          </section>
+            <section class="instructions">
+                <h4>Instructions:</h4>
+                <p>The cash balance above is how much you have available to purchase stock.
+                <br>Go to the research page to look up stocks and add them to your portfolio!
+                <br>Make good picks and try to be one of our top 10 investors on the Leaderboard Page.
+                </p>
+            </section>
+        </article>
+    </script>
+
+    <script id="leader-template" type="text/x-handlebars-template">
+        <tr>
+            <td>{{place}}.</td>
+            <td>{{user}}</td>
+            <td>{{cashValue}}</td>
+            <td>{{stockValue}}</td>
+            <td>{{netValue}}</td>
+        </tr>
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Cache Money</h1>
+        <nav>
+            <ul>
+                <!--<li><a href="/login">Login</a></li>
+                <li id="portfolio-nav"><a href="/portfolio">Portfolio</a></li>
+                <li id="search-nav"><a href="/search">Search</a></li>
+                <li><a href="/leaderboard" id="leaderboard-event">Leaderboard</a></li>
+                <li><a href="/about">About</a></li>-->
+                <a href="/login"><li>Login</li></a>
+                <a href="/portfolio" id="portfolio-nav"><li>Portfolio</li></a>
+                <a href="/search" id="search-nav"><li>Search</li></a>
+                <a href="/leaderboard" id="leaderboard-event"><li>Leaderboard</li></a>
+                <a href="/about"><li>About</li></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <section id="login" class="main-section">
+            <form id="signin-form">
+                <h4>Existing users: Sign in here</h4>
+                <input type="text" name="user-name" id="user-name" placeholder="Name" label="Username: " required />
+                <input type="password" name="user-pw" id="user-pw" placeholder="Password" label="Password: " required />
+                <button type="submit" id="signin-button">Submit</button>
+            </form>
+            <form id="signup-form">
+                <h4>New users: Sign up here</h4>
+                <input type="text" name="new-user-name" id="new-user-name" placeholder="Name" label="Username: " required />
+                <!--<input type="text" name="new-user-email" id="new-user-email" placeholder="Email" label="Email: " required />-->
+                <input type="password" name="new-user-pw" id="new-user-pw" placeholder="Password" label="Password: " required />
+                <button type="submit" id="signup-button">Submit</button>
+            </form>
+            <section class="instructions">
+                <h4>Instructions:</h4>
+                <p>Welcome to Cache Money!<br>
+                This site allows you to play a fantasy stock game.<br>
+                After you log in, go to the Portfolio Page to learn more.
+                </p>
+            </section>
+        </section>
+
+        <section id="search" class="main-section">
+            <h1>Search</h1>
+            <section id="stock-search">
+                <input type="text" id="stock-search-input" name="stock-search" placeholder="Search for a stock" label="Search for a stock" />
+                <button type="submit" id="search-button">Search</button>
+            </section>
+            <div id="canvas-holder">
+                <canvas id="stockchart" class="charts"></canvas>
+            </div>
+            <section id="stock-data">
+            </section>
+            <section id="account-info">
+              <h4>Transactions</h4>
+              <ul>
+                  <li>Purchase <input type="number" placeholder=" # of shares" label="Number to Buy"/><button type="submit" id="buy-button" >Buy</button></li>
+                  <li>Sell <input type="number" placeholder=" # of shares" label="Number to Sell"/><button type="submit" id="sell-button">Sell</button></li>
+              </ul>
+            </section>
+            <section id="account-balance">
+            </section>
+            <section class="instructions">
+                <h4>Instructions:</h4>
+                <p>Use the search section above to research stocks you are interested in purchasing.
+                    <br>You can use the buy and sell buttons to add/delete stocks from your portfolio.
+                    <br>The stocks you buy and sell will be at the price shown above.
+                    <br>Go to your portfolio page to view your entire portfolio!
+                </p>
+            </section>
+        </section>
+
+        <section id="portfolio" class="main-section">
+        </section>
+
+        <section id="leaderboard" class="main-section">
+            <h1>Leaderboard</h1>
+            <table id="leaderboard-table">
+            </table>
+        </section>
+
+        <section id="about" class="main-section">
+            <h1>About Us</h1>
+            <h4 class="description">Cache Money was created by Chris, Michelle, Niilo and Tom.</h4>
+            <div class="authors">
+                <h2>Chris Bruner</h2>
+                <img src="public/assets/chris.png" width="300" />
+                <p>Christopher Bruner finished his B.S. in Chemistry at California State Univeristy Long Beach and finished his Ph.D. in Physical Chemistry and Materials Engineering at Stanford University. His work experience as a product development engineer and data analyst at Intel opened up new horizons towards the field of computer science. To that end he is currently pursuing finishing a web development workshop lead by Code Fellows. He has working experience in statistics and data analysis, object-oriented programming, and relational databases. Specialties include data-driven problem solving, team collaborations and mentoring. His hobbies include video games, hiking, art, and reading books.</p>
+                <ul class="author-links">
+                <li><a href="https://github.com/QuantumArchive" target="_blank">Github</a></li>
+                <li><a href="https://www.linkedin.com/in/christopher-bruner-48046378" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="authors">
+                <h2>Niilo Smeds</h2>
+                <img src="public/assets/niilo.jpg" width="300"/>
+                <p>Niilo has authored many books on Tom Timmel, including "The Art of Tom Timmel," "The Tom Timmel Diet" and "Tom Timmel for Dummies."</p>
+                <ul class="author-links">
+                <li><a href="https://github.com/nsmeds" target="_blank">Github</a></li>
+                <li><a href="https://www.linkedin.com/in/niilo-smeds-4a0605120" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="authors">
+                <h2>Tom Timmel</h2>
+                <img src="public/assets/Tom Web.jpg" width="300"/>
+                <p>Tom Timmel is new to the world of coding. He comes from a business management background working mostly in tourism in Alaska. Tom has a Bachelors degree in Business Administration from Bowling Green State University and a Master's degree in Inclusive Education from Nazareth College in Rochester, N.Y. Tom is happiest when he is outdoors during any season hiking, skiing, paddling, or playing Ultimate. Check out the following links for more information.</p>
+                <ul class="author-links">
+                <li><a href="https://github.com/TomTimmel" target="_blank">Github</a></li>
+                <li><a href="https://www.linkedin.com/in/tom-timmel-896263122?trk=nav_responsive_tab_profile" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="authors">
+                <h2>Michelle Sri</h2>
+                <img src="public/assets/michelle3.png" width="300"/>
+                <p>Michelle went to UC Berkeley and owns a gold shop in Thailand. She doesn't like the word 'receptacle' nor does she believe in the Northern Lights. She secretly wishes to be a Pokemon (Pikachu) and she's halfway there!
+                </p>
+                <ul class="author-links">
+                <li><a href="https://github.com/michellesri" target="_blank">Github</a></li>
+                <li><a href="https://www.linkedin.com/in/michellesri" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+      <ul>
+        <li><a href="https://github.com/CacheMoneyDB">2016 CacheMoneyDB</a></li>
+        <li>Powered by <a href="http://finance.yahoo.com/">Yahoo Finance</a></li>
+      </ul>
+  </footer>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
+  <!--<script type="text/javascript" src="scripts/controller/controller.js"></script>
+  <script type="text/javascript" src="scripts/controller/routes.js"></script>-->
+  <script type="text/javascript" src="scripts/controller/controllerjquery.js"></script>
+  <script type="text/javascript" src="scripts/model/stockResearchModel.js"></script>
+  <script type="text/javascript" src="scripts/model/leaderboardModel.js"></script>
+  <script type="text/javascript" src="scripts/view/stockResearch.js"></script>
+  <script type="text/javascript" src="scripts/view/stockTrans.js"></script>
+  <script type="text/javascript" src="scripts/view/leaderboard.js"></script>
+  <script type="text/javascript" src="scripts/view/portfolio.js"></script>
+  <script type="text/javascript" src="scripts/view/login.js"></script>
+</body>
+</html>
