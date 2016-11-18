@@ -1,6 +1,7 @@
 const mongoose = require( 'mongoose' );
 
 // we need a URI that points to our database
+
 const dbURI = process.env.MONGODB_URI_TB || 'mongodb://localhost/cachemoneydev';
 
 mongoose.Promise = Promise;
