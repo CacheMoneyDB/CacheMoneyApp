@@ -26,7 +26,7 @@
                 type: 'POST',
                 contentType: 'application/json',
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + localStorage.getItem()
                 },
                 error: function(error) {
                     console.log(error);
@@ -51,7 +51,7 @@
     };
 
     login.newUser = function() {
-        $('#signup-button').on('submit', function(event) {
+        $('#signup-button').on('click touchstart', function(event) {
             event.preventDefault();
             $('.error-msg').empty();
             $('#logged-in').empty();
@@ -77,7 +77,7 @@
     };
 
     login.existingUser = function() {
-        $('#signin-button').on('submit', function(event) {
+        $('#signin-button').on('click touchstart', function(event) {
             event.preventDefault();
             $('.error-msg').empty();
             $('#logged-in').empty();
@@ -115,7 +115,7 @@
     };
 
     login.logOut = function() {
-        $('#logout-button').on('submit', function(event) {
+        $('#logout-button').on('click touchstart', function(event) {
             event.preventDefault();
             login.clearAll();
             localStorage.removeItem('token');
