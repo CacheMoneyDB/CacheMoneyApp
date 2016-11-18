@@ -26,7 +26,7 @@
                 type: 'POST',
                 contentType: 'application/json',
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.token
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
                 },
                 error: function(error) {
                     console.log(error);
@@ -52,7 +52,7 @@
 
     login.newUser = function() {
         $('#signup-button').on('click touchstart', function(event) {
-            event.preventDefault();
+            // event.preventDefault();
             $('.error-msg').empty();
             $('#logged-in').empty();
             let data = {};
