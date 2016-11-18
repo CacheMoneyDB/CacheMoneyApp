@@ -7,7 +7,7 @@
     "pretest": "eslint .",
     "test": "mocha",
     "test:watch": "mocha -w",
-    "start": "eslint . && mocha && node server.js",
+    "start": "node server.js",
     "lint": "eslint ."
   },
   "repository": {
@@ -33,6 +33,7 @@
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
+    "eslint": "^3.10.2",
     "express": "^4.14.0",
     "jquery": "^3.1.1",
     "jsonwebtoken": "^7.1.9",
