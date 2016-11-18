@@ -159,7 +159,6 @@ describe('tests out the portfolio api', () => {
             .get('/portfolios')
             .set('Authorization', `Bearer ${tokenOne}`)
             .then(res => {
-                console.log('res.body portfolio: ', res.body);
                 assert.isOk(res.body);
                 done();
             })
