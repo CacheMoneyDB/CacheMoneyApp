@@ -9,7 +9,7 @@
             // let token = localStorage.getItem('token');
             $.ajax({
                 headers: {
-                    Authorization: 'Bearer' + module.localStorage.getItem('token') 
+                    Authorization: 'Bearer ' + module.localStorage.getItem('token') 
                 },
                 type: 'GET',
                 contentType: 'application/json',
