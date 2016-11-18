@@ -99,7 +99,6 @@ describe('user management', () => {
           .post('/users/signup')
           .send(userAdmin)
           .then(res => {
-              // console.log('res from describe test: ', res);
               assert.isOk(adminToken = res.body.token);
               done();
           })
@@ -116,11 +115,9 @@ describe('user management', () => {
           .del('/users')
           .set('authorization', `Bearer ${userToken}`)
           .then(() => {
-              // console.log('res: ', res);
               done('status should error');
           })
           .catch(err => {
-              // console.log('err in non-admin: ', err);
               //put an assert here to check for correct error.
               assert.equal(err, 'Error: Bad Request');
               done();

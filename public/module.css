@@ -38,17 +38,16 @@ table{
 #leaderboard th, td{
     padding: .3em;
     font-size: 1.5em;
-     border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
-tr:nth-child(even) {
-    background-color: #aec4e8
-    }
+
 th {
     background-color: #5673a3;
 }
-/*@media only screen and (min-width: 820px) {
-  #canvas-holder {
-      max-width: 500px;
-      max-height: 400px;
+
+@media only screen and (max-width: 600px) {
+  table {
+      font-size: 0.7em;
+      max-width: 95vw;
   }
-}*/
+}

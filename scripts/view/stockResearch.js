@@ -31,7 +31,6 @@
     stockSearch.addButton();
 
     stockSearch.renderStock = function(snapShot){
-        // console.log('SData', stockSearch);
         $('#stock-data').empty().append(stockCompiler(snapShot));
     };
 
