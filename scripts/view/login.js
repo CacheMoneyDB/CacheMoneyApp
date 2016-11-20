@@ -44,6 +44,8 @@
         $('#portfolio-details').empty();
         $('#signin-form').show().trigger('reset');
         $('#signup-form').show().trigger('reset');
+        $('#account-balance').empty()
+        $('#leaderboard-table').empty();
         $('#stock-search-input').trigger('reset');
         $('input').trigger('reset');
         $('.error-msg').remove();
@@ -120,6 +122,7 @@
             login.clearAll();
             localStorage.removeItem('token');
             $('#logged-in').html('You have logged out. See you next time!');
+
         });
     };
 
