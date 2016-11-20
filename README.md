@@ -3,18 +3,18 @@ Fantasy stock trading single page app
 
 ### Built with
 
-MONGO
-Express
-Node
-Deployed with Heroku
-Handlebars
-Jquery
+* MONGO
+* Express
+* Node
+* Deployed with Heroku
+* Handlebars
+* Jquery
 
 ### Authors
 
-[Chris Bruner](https://github.com/QuantumArchive)
-[Michelle Srikhundonr](https://github.com/michellesri)
-[Niilo Smeds](https://github.com/nsmeds)
+[Chris Bruner](https://github.com/QuantumArchive),
+[Michelle Srikhundonr](https://github.com/michellesri),
+[Niilo Smeds](https://github.com/nsmeds), and 
 [Tom Timmel](https://github.com/TomTimmel)
 
 ### Application Instructions
