@@ -31,9 +31,9 @@
     padding-bottom: .5em;
 }
 
-table{
+/*table{
     margin-top: 3em;
-}
+}*/
 
 #leaderboard th, td{
     padding: .3em;
@@ -56,6 +56,11 @@ th {
 
 #about p {
     text-align: justify;
+}
+
+.tableholder {
+    max-width: 85vw;
+    overflow: scroll;
 }
 
 @media only screen and (max-width: 600px) {
