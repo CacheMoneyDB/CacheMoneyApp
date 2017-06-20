@@ -12,6 +12,7 @@
             $.ajax({
                 url: '/yapi?stocks=' + stockSearch.ticker
             }).done(function(data){
+                console.log(data);
                 if(data.historical.length === 0) {
                     $('#stock-search').append('<span class="error-msg"><br>Please enter a valid stock ticker.</span>');
                 };
