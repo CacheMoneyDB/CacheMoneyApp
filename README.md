@@ -42,6 +42,8 @@ Fantasy stock trading single page app
 
 Our GitHub: https://github.com/CacheMoneyDB/CacheMoneyApp
 
+put basic instructions here: git clone, npm install, etc.
+
 ### Other libraries
 
 -using yahoo-finance npm package to get stock data with a 15 minute delay

@@ -1,3 +1,7 @@
+// Eegads! Don't repeat an entire file to change one value!
+// Modify the module to export a function and pass in 
+// optional uri parameter!
+
 const mongoose = require( 'mongoose' );
 
 // we need a URI that points to our database

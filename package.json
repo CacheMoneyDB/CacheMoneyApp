@@ -4,7 +4,7 @@
   "description": "fantasy stock app with persistence",
   "main": "server.js",
   "scripts": {
-    "pretest": "eslint .",
+    "pretest": "npm run lint",
     "test": "mocha",
     "test:watch": "mocha -w",
     "start": "node server.js",

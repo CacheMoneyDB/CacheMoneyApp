@@ -9,7 +9,6 @@ chai.use(chaiHttp);
 describe('yahoo api test', () => {
 
     const request = chai.request(app);
-    const stockTicker = 'GOOGL';
 
     const Jared = {
         username: 'Jared Vennett',
@@ -20,9 +19,6 @@ describe('yahoo api test', () => {
         username: 'Charlie Geller',
         password: 'brownfield'
     };
-
-    let tokenOne = '';
-    let tokenTwo = '';
 
     const buyOrderOne = {
         stock: 'GOOGL',
@@ -36,56 +32,58 @@ describe('yahoo api test', () => {
         price: 10
     };
 
-    before((done) => {
+    // try to be consistent with single-param arrow fns
+    before(done => {
         const drop = () => connection.db.dropDatabase(done);
         if(connection.readyState === 1) drop();
         else connection.on('open', drop);
     });
 
-    before(done => {
-        request
+    // 1. Don't serialize work that can be done in parallel
+    // 2. Refactor common work to functions
+    // 3. Structure logically to make it easier to see what's going on
+    function createUserAndBuyStocks(user, order) {
+        return request
             .post('/users/signup')
-            .send(Jared)
+            .send(user)
             .then(res => {
-                assert.isOk(res.body.token);
-                tokenOne = res.body.token;
+                const token = res.body.token;
+                assert.isOk(token);
+                return token;
+            })
+            .then(token => {
                 return request
-                        .post('/users/signup')
-                        .send(Charlie);
+                    .put('/portfolios/buy')
+                    .set('Authorization', `Bearer ${token}`)
+                    .send(order);
             })
-            .then(resTwo => {
-                assert.isOk(resTwo.body.token);
-                tokenTwo = resTwo.body.token;
-                return request
-                        .put('/portfolios/buy')
-                        .set('Authorization', `Bearer ${tokenOne}`)
-                        .send(buyOrderOne);
-            })
-            .then(resThree => {
-                assert.isOk(resThree.body);
-                return request
-                        .put('/portfolios/buy')
-                        .set('Authorization', `Bearer ${tokenTwo}`)
-                        .send(buyOrderTwo);
-            })
-            .then(resFour => {
-                assert.isOk(resFour.body);
-                done();
-            })
-            .catch(err => done(err));
+            .then(res => assert.isOk(res.body));
+    }
+
+    before(done => {
+        Promise.all([
+            createUserAndBuyStocks(Jared, buyOrderOne), 
+            createUserAndBuyStocks(Charlie, buyOrderTwo)
+        ]).catch(done);
     });
 
+    // nice job on using anonymous function to retain `this`  
+    // context mocha needs to change timeout
     it('makes a /GET request for a certain stock using the API route', function(done){
         this.timeout(5000);
+        // this is only used here, better to scope to local function
+        const stockTicker = 'GOOGL';
 
         request
             .get(`/yapi?stocks=${stockTicker}`)
-            .then(res => {
-                assert.isOk(res.body);
-                assert.equal(res.body.snapshot[0].symbol, stockTicker);
+            // use destructuring to simplify:
+            .then(({ body }) => {
+                assert.isOk(body);
+                assert.equal(body.snapshot[0].symbol, stockTicker);
                 done();
             })
-            .catch(err => done(err));
+            // surrounding arrow function is unnecessary
+            .catch(done);
     });
 
     it('makes a /GET request to make a daily update to the server to update everyones portfolio', function(done){

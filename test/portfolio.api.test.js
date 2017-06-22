@@ -70,18 +70,6 @@ describe('tests out the portfolio api', () => {
         password: 'thisbigshort'
     };
 
-    const buyOrderOne = {
-        stock: 'AAPL',
-        shares: 100,
-        price: 50
-    };
-
-    const buyOrderTwo = {
-        stock: 'GOOGL',
-        shares: 100,
-        price: 70
-    };
-
     const sellOrder = {
         stock: 'AAPL',
         shares: 50,
@@ -91,98 +79,74 @@ describe('tests out the portfolio api', () => {
     let tokenOne = '';
     let tokenTwo = '';
 
-    it('signs up a new user Steve', done => {
-        request
-            .post('/users/signup')
-            .send(Steve)
-            .then(res => {
-                assert.isOk(res.body.token);
-
-                tokenOne = res.body.token;
-                done();
-            })
-            .catch(err => done(err));
-    });
-
-    it('signs up a new user Jamie', done => {
-        request
-            .post('/users/signup')
-            .send(Jamie)
-            .then(res => {
-                assert.isOk(res.body.token);
-                tokenTwo = res.body.token;
-                done();
-            })
-            .catch(err => done(err));
-    });
-
-    function userSignup(user, doneCB) {
+    // 1) This is pretty strange having two users 
+    // with repeated code and the rest using a common 
+    // function. Just add the token return to the 
+    // common function!
+    // 2) Sticking with promises is better than mixed cb/promises,
+    // and makes all this much cleaner
+    // 3) Seems like more of a setup than test
+    function signup(user) {
         request
             .post('/users/signup')
             .send(user)
             .then(res => {
-                assert.isOk(res.body.token);
-                doneCB();
-            })
-            .catch(err => doneCB(err));
+                const token = res.body.token;
+                assert.isOk(token);
+                return token;
+            });
     };
 
-    it('signs up new user Chris', done => {
-        userSignup(Chris, done);
+    // you could use `done` here, just showing how
+    // going to all Promises reduces Lines of Code
+    before(() => {
+        const users = [Steve, Jamie, Chris, Dave, Wayne, Tony, Garbage, Whatever, Anime, Movie, Laptop];
+        const signups = users.map(user => signup(user));
+
+        return Promise.all(signups).then(([one, two]) => {
+            tokenOne = one;
+            tokenTwo = two;
+        });
     });
 
-    it('signs up new user Dave', done => {
-        userSignup(Dave, done);
-    });
-
-    it('signs up new user Wayne', done => {
-        userSignup(Wayne, done);
-    });
-
-    it('signs up new user Tony', done => {
-        userSignup(Tony, done);
-    });
-
-    it('signs up new user Garbage', done => {
-        userSignup(Garbage, done);
-    });
-
-    it('signs up new user Whatever', done => {
-        userSignup(Whatever, done);
-    });
-
-    it('signs up new user Anime', done => {
-        userSignup(Anime, done);
-    });
-
-    it('signs up new user Movie', done => {
-        userSignup(Movie, done);
-    });
-
-    it('signs up new user Laptop', done => {
-        userSignup(Laptop, done);
-    });
+    // refactor to function simplifies tests:
+    function buyStocks(buyOrder, token) {
+        return request
+            .put('/portfolios/buy')
+            .set('Authorization', `Bearer ${token}`)
+            .send(buyOrder)
+            .then(({ body }) => body);
+    }
 
     it('buys a list of stocks', done => {
-        request
-            .put('/portfolios/buy')
-            .set('Authorization', `Bearer ${tokenOne}`)
-            .send(buyOrderOne)
-            .then(res => {
-                assert.isOk(res.body);
-                return request
-                    .put('/portfolios/buy')
-                    .set('Authorization', `Bearer ${tokenOne}`)
-                    .send(buyOrderTwo);
-            })
-            .then(resTwo => {
-                assert.isOk(resTwo.body);
-                assert.equal(resTwo.body.stockValue, 12000);
-                assert.equal(resTwo.body.cashValue, 88000);
-                assert.deepEqual(resTwo.body.stocks, { GOOGL: 100, AAPL: 100});
+
+        // by putting these here, we can visually
+        // compare the math of the test
+        const buyOrderOne = {
+            stock: 'AAPL',
+            shares: 100,
+            price: 50
+        };
+
+        const buyOrderTwo = {
+            stock: 'GOOGL',
+            shares: 100,
+            price: 70
+        };
+
+        buyStocks(buyOrderOne, tokenOne)
+            .then(body => {
+                assert.isOk(body);
+                return buyStocks(buyOrderTwo, tokenTwo);
+            })          
+            .then(body => {
+                assert.isOk(body);
+                assert.equal(body.stockValue, 12000);
+                assert.equal(body.cashValue, 88000);
+                assert.deepEqual(body.stocks, { GOOGL: 100, AAPL: 100});
                 done();
             })
-            .catch(err => done(err));
+            .catch(done);
     });
 
     it('sells some stocks', done => {
